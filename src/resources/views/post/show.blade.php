@@ -1,168 +1,202 @@
 @extends('layouts.main')
 @section('content')
     <main>
-        <!--================Blog Area =================-->
-        <section class="blog_area single-post-area section-padding">
+        <!-- About US Start -->
+        <div class="about-area2 gray-bg pt-60 pb-40">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 posts-list">
-                        <div class="single-post">
-                            <h2>{{ $post->title}}
-                            </h2>
-                            <div class="feature-img">
-                                <img class="img-fluid" src="{{ asset('assets/img/blog/single_blog_1.png') }}" alt="">
+                    <div class="col-lg-8">
+                        <!-- Trending Tittle -->
+                        <div class="about-right mb-90">
+                            <div class="about-img">
+                                <img src="{{ $post->urlToImage }}" alt="image">
                             </div>
-                            <div class="blog_details">
-                                 {{ $post->description }}
+                            <div class="heading-news mb-30 pt-30">
+                                <h3>{{ $post->title }}</h3>
                             </div>
+                            <div class="about-prea mb-3">
+                                <span class="about-pera1 ">автор - {{ $post->author }}</span>
+                            </div>
+
+                            <div class="about-prea">
+                                <p class="about-pera1 mb-25">{{ $post->content }}</p>
+                            </div>
+
+                            <div class="about-prea">
+                                <a class="about-pera1" href="{{ $post->url }}" target="_blank"><p>Источник</p></a>
+                            </div>
+
+                           <!-- <div class="social-share pt-30">
+                                <div class="section-tittle">
+                                    <h3 class="mr-20">Share:</h3>
+                                    <ul>
+                                        <li><a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a></li>
+                                        <li><a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
+                                        <li><a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
+                                        <li><a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>-->
                         </div>
-
-                        <div class="blog-author">
-                            <div class="media align-items-center">
-                                <img src="{{ asset('assets/img/blog/author.png') }}" alt="">
-                                <div class="media-body">
-                                    <a href="#">
-                                        <h4>Harvard milan</h4>
-                                    </a>
-                                    <p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he
-                                        our dominion twon Second divided from</p>
-                                </div>
-                            </div>
-                        </div>
-                       <!-- <div class="comments-area">
-                            <h4>05 Comments</h4>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/img/comment/comment_1.png') }}" alt="">
+                        <!-- From -->
+                        <!--<div class="row">
+                            <div class="col-lg-8">
+                                <form class="form-contact contact_form mb-80" action="" method="post" id="contactForm" novalidate="novalidate">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control w-100 error" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder="Enter Message"></textarea>
+                                            </div>
                                         </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                                Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                                </div>
-
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control error" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control error" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <input class="form-control error" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="form-group mt-3">
+                                        <button type="submit" class="button button-contactForm boxed-btn boxed-btn2">Send</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/img/comment/comment_2.png') }}" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                                Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets/img/comment/comment_3.png') }}" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                                Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-                        <!--<div class="comment-form">
-                            <h4>Leave a Reply</h4>
-                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                                </div>
-                            </form>
                         </div>-->
                     </div>
                     <div class="col-lg-4">
-                        <div class="blog_right_sidebar">
-
-                            <aside class="single_sidebar_widget popular_post_widget">
-                                @if(isset($recentOffers))
-                                <h3 class="widget_title">Recent Post</h3>
-                                @foreach($recentOffers as $postItem)
-                                <div class="media post_item">
-                                    <img src="{{ asset('assets/img/post/post_1.png') }}" alt="post">
-                                    <div class="media-body">
-                                        <a href="{{ route('post.show', $postItem->id) }}">
-                                            <h3>{{ $postItem->title}}</h3>
-                                        </a>
-                                        <p>January 12, 2019</p>
+                        <div class="most-recent-area">
+                            <!-- Section Tittle -->
+                            <div class="small-tittle mb-20">
+                                <h4>Most Recent</h4>
+                            </div>
+                            <!-- Details -->
+                            @if(isset($pool1))
+                                @foreach($pool1 as $offer)
+                            <div class="most-recent mb-40">
+                                <div class="most-recent-img">
+                                    <img style="height:180px;" src="{{ $offer->urlToImage }}" alt="image">
+                                    <div class="most-recent-cap">
+                                        <!--<span class="bgbeg">Vogue</span>-->
+                                        <h4><a href="latest_news.html">{{ $offer->title }}</a></h4>
                                     </div>
                                 </div>
+                            </div>
                                 @endforeach
-                                @endif
+                            @endif
+                            @if(isset($pool2))
+                                @foreach($pool2 as $offer)
+                            <!-- Single -->
+                            <div class="most-recent-single">
 
-                            </aside>
+                                <div class="most-recent-capt">
+                                    <h4><a href="latest_news.html">{{ $offer->title }}</a></h4>
 
+                                </div>
+                            </div>
+                                @endforeach
+                            @endif
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About US End -->
+        @if(isset($pool3))
+        <!--   Weekly3-News start -->
+        <div class="weekly3-news-area pt-80 pb-130">
+            <div class="container">
+                <div class="weekly3-wrapper">
+                    <div class="row">
+                        <div class="col">
+                            <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
+                                <div class="title"><h3>Общее</h3></div>
+                                <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="slider-wrapper">
+                                <!-- Slider -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="weekly3-news-active dot-style d-flex">
 
+                                            @foreach($pool3 as $offer)
+                                                <div class="weekly3-single">
+                                                    <div class="weekly3-img">
+                                                        <img src="{{ $offer->urlToImage }}" alt="image">
+                                                    </div>
+                                                    <div class="weekly3-caption">
+                                                        <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--================ Blog Area end =================-->
+        </div>
+        <!--   End Weekly3-News -->
+        @endif
+        @if(isset($pool4))
+        <!--   Weekly2-News start -->
+        <div class="weekly2-news-area pt-50 pb-30 gray-bg">
+            <div class="container">
+                <div class="weekly2-wrapper">
+                    <div class="row">
+                        <div class="col">
+                            <div class="slider-wrapper">
+                                <!-- section Tittle -->
+                                <div class="row">
+                                    <div class="col d-flex justify-content-between align-items-center">
+                                        <div class="small-tittle mb-30">
+                                            <h4>Тенденции</h4>
+                                        </div>
+                                        <div class="small-tittle mb-30">
+                                            <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Slider -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="weekly2-news-active d-flex">
+                                            @foreach($pool4 as $offer)
+                                            <!-- Single -->
+                                            <div class="weekly2-single">
+                                                <div class="weekly2-img">
+                                                    <img src="{{ $offer->urlToImage }}" alt="image">
+                                                </div>
+                                                <div class="weekly2-caption">
+                                                    <h4><a href="#">{{ $offer->title }}</a></h4>
+
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Weekly-News -->
+            @endif
     </main>
 @endsection

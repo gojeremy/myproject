@@ -79,9 +79,9 @@
                             @foreach($pool2 as $post)
                             <div class="most-recent mb-40">
                                 <div class="most-recent-img">
-                                    <img style="height: 200px;" src="{{ $post->urlToImage }}" alt="">
+                                    <img style="height: 180px;" src="{{ $post->urlToImage }}" alt="">
                                     <div class="most-recent-cap">
-                                        <span class="bgbeg">tst</span>
+                                        <!--<span class="bgbeg">tst</span>-->
                                         <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
                                         <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                     </div>
