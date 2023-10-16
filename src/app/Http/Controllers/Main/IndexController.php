@@ -73,6 +73,9 @@ class IndexController extends Controller
             return $post->category == 'entertainment';
         })->splice(0, 8);
 
-        return view('main.index', compact('tags', 'taggedPosts', 'pool2', 'pool3', 'pool4','pool5', 'pool6', 'pool7', 'pool8', 'pool9', 'mobile_offer', 'desctop_offers'));
+        // footer: 3 элемента
+        $footer = $posts->splice(0, 3);
+
+        return view('main.index', compact('tags', 'taggedPosts', 'pool2', 'pool3', 'pool4','pool5', 'pool6', 'pool7', 'pool8', 'pool9', 'mobile_offer', 'desctop_offers', 'footer'));
     }
 }

@@ -20,10 +20,9 @@
                                         <!--Nav Button  -->
                                         <nav>
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                <a class="nav-item nav-link active" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="true">hot</a>
-                                                <a class="nav-item nav-link" id="nav-popular-tab" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-popular" aria-selected="true">popular</a>
-                                                <a class="nav-item nav-link" id="nav-recommended-tab" data-toggle="tab" href="#nav-recommended" role="tab" aria-controls="nav-recommended" aria-selected="true">recommended</a>
-                                                <a class="nav-item nav-link" id="nav-general-tab" data-toggle="tab" href="#nav-general" role="tab" aria-controls="nav-general" aria-selected="true">general</a>
+                                                <a class="nav-item nav-link active" id="nav-hot-tab" data-toggle="tab" href="#nav-hot" role="tab" aria-controls="nav-hot" aria-selected="true">Горячее</a>
+                                                <a class="nav-item nav-link" id="nav-popular-tab" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-popular" aria-selected="true">Популярное</a>
+                                                <a class="nav-item nav-link" id="nav-recommended-tab" data-toggle="tab" href="#nav-recommended" role="tab" aria-controls="nav-recommended" aria-selected="true">Рекомендации</a>
                                                 </div>
                                         </nav>
                                         <!--End Nav Button  -->
@@ -46,8 +45,8 @@
                                                             <img src="{{ $post->urlToImage }}" alt="Image">
                                                         </div>
                                                         <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">{{ $post->title }}</a></h4>
-                                                            <span>автор {{ $post->author }}  -   Jun 19, 2020</span>
+                                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                            <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
                                                             <p></p>
                                                         </div>
                                                     </div>

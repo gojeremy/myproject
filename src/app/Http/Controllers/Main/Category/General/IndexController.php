@@ -13,23 +13,29 @@ class IndexController extends Controller
     {
         $posts = Post::where('published', 1)
             ->where('category', 'general')
+            ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
             ->orderBy('priority_id', 'desc')
-            ->paginate(36);
+            ->paginate(27);
 
-        $tags = ['hot', 'popular', 'recommended', 'general'];
+        $tags = ['hot', 'popular', 'recommended'];
         $taggedPosts = [];
 
         foreach ($tags as $tag) {
-            $taggedPosts[$tag] = $posts->splice(0, 9); // Берем первые 12 элементов (посты в порядке)
+            $taggedPosts[$tag] = $posts->splice(0, 9); // Берем первые 27 элементов (посты в порядке)
         }
 
         $offers = Offer::where('published', 1)
             ->orderBy('priority_id', 'desc')
             ->get();
 
-        $mobile_offer = $offers->take(1);
+        $mobile_offer = $offers->splice(1);
         //   dd($modal_offer);
-        $desctop_offers = $offers->take(6);
-        return view('main.category.general.index', compact('taggedPosts', 'tags', 'posts', 'mobile_offer', 'desctop_offers'));
+        $desctop_offers = $offers->splice(6);
+
+        // footer: 3 элемента
+        $footer_posts = Post::all();
+        $footer = $footer_posts->take(3);
+
+        return view('main.category.general.index', compact('taggedPosts', 'tags', 'posts', 'mobile_offer', 'desctop_offers', 'footer'));
     }
 }
