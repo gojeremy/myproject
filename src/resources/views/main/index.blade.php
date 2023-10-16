@@ -47,8 +47,8 @@
                                                             <img src="{{ $post->urlToImage }}" alt="image">
                                                         </div>
                                                         <div class="whates-caption">
-                                                            <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                            <span>автор {{ $post->author }}   -   Jun 19, 2020</span>
+                                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                            <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
                                                             <p>{{ Str::limit($post->description, $limit = 115, $end = '...') }}
                                                             </p>
                                                         </div>
@@ -72,7 +72,7 @@
                             <!-- Section Tittle -->
                             <div class="small-tittle mb-20 d-flex justify-content-between align-items-center">
                                 <div class="title"><h3>Рекомендации</h3></div>
-                                <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;">см. все</a></div>
+                                <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                             </div>
                             <!-- Details -->
                             @if(isset($pool2))
@@ -82,8 +82,8 @@
                                     <img style="height: 200px;" src="{{ $post->urlToImage }}" alt="">
                                     <div class="most-recent-cap">
                                         <span class="bgbeg">tst</span>
-                                        <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                        <p>Jhon  |  2 hours ago</p>
+                                        <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                        <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +97,8 @@
                                     <img src="" style="max-width: 65px;" alt="image">
                                 </div>-->
                                 <div class="most-recent-capt">
-                                    <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                    <p>автор {{ $post->author }}  |  2 hours ago</p>
+                                    <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                 </div>
                             </div>
                                 @endforeach
@@ -118,7 +118,7 @@
                             <div class="col">
                                 <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
                                     <div class="title"><h3>Общее</h3></div>
-                                    <div class="title"><a href="{{ route('main.category.general.index') }}" style="color: #000;">см. все</a></div>
+                                    <div class="title"><a href="{{ route('main.category.general.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                                 </div>
 
                             </div>
@@ -135,8 +135,8 @@
                                                             <img src="{{ $post->urlToImage }}" alt="image">
                                                         </div>
                                                         <div class="weekly3-caption">
-                                                            <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                            <p>19 Jan 2020</p>
+                                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                            <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -160,9 +160,12 @@
                             <div class="slider-wrapper">
                                 <!-- section Tittle -->
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col d-flex justify-content-between align-items-center">
                                         <div class="small-tittle mb-30">
                                             <h4>Тенденции</h4>
+                                        </div>
+                                        <div class="small-tittle mb-30">
+                                            <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
                                         </div>
                                     </div>
                                 </div>
@@ -177,8 +180,8 @@
                                                     <img src="{{ $post->urlToImage }}" alt="image">
                                                 </div>
                                                 <div class="weekly2-caption">
-                                                    <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                    <p>автор {{ $post->author }}   |  2 hours ago</p>
+                                                    <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -201,7 +204,7 @@
                             <div class="col">
                                 <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
                                     <div class="title"><h3>Бизнес</h3></div>
-                                    <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;">см. все</a></div>
+                                    <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                                 </div>
 
                             </div>
@@ -220,8 +223,8 @@
                                                             <img src="{{ $post->urlToImage }}" alt="image">
                                                         </div>
                                                         <div class="weekly3-caption">
-                                                            <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                            <p>19 Jan 2020</p>
+                                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                            <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -243,12 +246,13 @@
                     <div class="col">
                         <div class="whats-news-wrapper">
                             <!-- Heading & Nav Button -->
-                            <div class="row justify-content-between align-items-end mb-15">
-                                <div class="col-xl-4">
-                                    <div class="section-tittle mb-30">
+                            <div class="row justify-content-between align-items-end mb-15 mx-2">
+                                    <div class="section-tittle">
                                         <h3>Инсайд</h3>
                                     </div>
-                                </div>
+                                    <div class="section-tittle">
+                                        <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
+                                    </div>
                             </div>
                             <!-- Tab content -->
                             <div class="row">
@@ -259,8 +263,8 @@
                                             <img src="{{ $post->urlToImage }}" alt="image">
                                         </div>
                                         <div class="whates-caption">
-                                            <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                            <span>автор {{ $post->author }}   -   Jun 19, 2020</span>
+                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                            <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
                                             <p>{{ $post->description }}
                                             </p>
                                         </div>
@@ -288,12 +292,13 @@
                         <div class="col">
                             <div class="slider-wrapper">
                                 <!-- section Tittle -->
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="row justify-content-between align-items-end mb-15 mx-2">
                                         <div class="small-tittle mb-30">
                                             <h4>Тенденции</h4>
                                         </div>
-                                    </div>
+                                    <div class="small-tittle mb-30">
+                                        <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
+                                        </div>
                                 </div>
                                 <!-- Slider -->
                                 <div class="row">
@@ -306,8 +311,8 @@
                                                         <img src="{{ $post->urlToImage }}" alt="image">
                                                     </div>
                                                     <div class="weekly2-caption">
-                                                        <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                        <p>автор {{ $post->author }}   |  2 hours ago</p>
+                                                        <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                        <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -330,7 +335,7 @@
                         <div class="col">
                             <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
                                 <div class="title"><h3>Развлечения</h3></div>
-                                <div class="title"><a href="{{ route('main.category.business.index') }}" style="color: #000;">см. все</a></div>
+                                <div class="title"><a href="{{ route('main.category.business.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                             </div>
 
                         </div>
@@ -349,8 +354,8 @@
                                                     <img src="{{ $post->urlToImage }}" alt="image">
                                                 </div>
                                                 <div class="weekly3-caption">
-                                                    <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
-                                                    <p>19 Jan 2020</p>
+                                                    <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
                                                 </div>
                                             </div>
                                             @endforeach

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -52,7 +52,7 @@
                                 <div class="trend-top-img">
                                     <img class="h-280 w-100 mx-auto" style="object-fit: cover; border-radius: 3px;" src="{{ $mobile_offer->first()->urlToImage }}" alt="image">
                                     <div class="trend-top-cap trend-top-cap2 mt-2 mx-3">
-                                        <a href="{{ route('main.teaserfeed.index') }}">
+                                        <a href="{{ $mobile_offer->first()->title }}" target="_blank">
                                             <p>{{ $mobile_offer->first()->title }}</p>
                                         </a>
                                     </div>
@@ -76,7 +76,7 @@
     object-fit: cover; border-radius: 7px;" src="{{ $offer->urlToImage }}" alt="image">
                                     </div>
                                     <div class="trend-top-cap trend-top-cap2 ">
-                                        <a href="{{ $offer->url }}">
+                                        <a href="{{ $offer->url }}" target="_blank">
                                             <p>{{ $offer->title }}</p>
                                         </a>
                                     </div>
@@ -90,7 +90,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Больше новостей</button>
+                <a href="{{ route('main.teaserfeed.index') }}" class="btn btn-brimary" target="_blank">Больше новостей</a>
+
             </div>
         </div>
     </div>
