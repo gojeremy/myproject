@@ -36,7 +36,6 @@ class IndexController extends Controller
         Cache::forget('offersMainIndex');
 
         $mobile_offer = $offers->first();
-        dd($mobile_offer);
         $desctop_offers = $offers->take(6);
         // Инициализируем массивы для пулов
         $pool1 = [];
