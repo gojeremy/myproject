@@ -20,7 +20,7 @@ class IndexController extends Controller
                 ->paginate(27);
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-        // Cache::forget('postsMainCategoryGeneralIndex');
+         Cache::forget('postsMainCategoryGeneralIndex');
 
         $offers = Cache::remember('offersMainCategoryGeneralIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
@@ -30,7 +30,7 @@ class IndexController extends Controller
                 ->get();
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-        // Cache::forget('offersMainCategoryGeneralIndex');
+         Cache::forget('offersMainCategoryGeneralIndex');
 
         $tags = ['hot', 'popular', 'recommended'];
         $taggedPosts = [];

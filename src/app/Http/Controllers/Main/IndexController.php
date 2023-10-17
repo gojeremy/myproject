@@ -21,7 +21,7 @@ class IndexController extends Controller
                 ->get();
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-       // Cache::forget('postsMainIndex');
+        Cache::forget('postsMainIndex');
 
 
         $offers = Cache::remember('offersMainIndex', now()->addMinutes(5), function () {
@@ -33,7 +33,7 @@ class IndexController extends Controller
         });
 
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-     //   Cache::forget('offersMainIndex');
+        Cache::forget('offersMainIndex');
 
         $mobile_offer = $offers->get(1);
         dd($mobile_offer);

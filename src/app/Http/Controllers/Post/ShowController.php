@@ -22,7 +22,7 @@ class ShowController extends Controller
                 ->get();
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-        // Cache::forget('offersPostShow');
+         Cache::forget('offersPostShow');
 
         // Инициализируем массивы для пулов
         $desctop_offers = [];

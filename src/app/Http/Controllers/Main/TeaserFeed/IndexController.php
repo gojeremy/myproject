@@ -19,7 +19,7 @@ class IndexController extends Controller
                 ->paginate(12);
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-        // Cache::forget('offersTeaserFeed');
+         Cache::forget('offersTeaserFeed');
 
         $mobile_offer = $offers->take(1);
         $desktop_offers = $offers->take(6);
