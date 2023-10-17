@@ -31,11 +31,12 @@ class IndexController extends Controller
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->get();
         });
+
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
      //   Cache::forget('offersMainIndex');
 
-        $mobile_offer = $offers->take(1);
-     //   dd($modal_offer);
+        $mobile_offer = $offers->get(1);
+        dd($mobile_offer);
         $desctop_offers = $offers->take(6);
         // Инициализируем массивы для пулов
         $pool1 = [];
