@@ -49,13 +49,13 @@ class IndexController extends Controller
         $pool9 = [];
 
         // Пул 1: 20 элементов
-        $pool1 = $posts->splice(0, 12);
+        $pool1 = $posts->splice(0, 18);
         $tags = ['hot', 'popular', 'recommended'];
         $taggedPosts = [];
         foreach ($tags as $tag) {
-            $taggedPosts[$tag] = $pool1->splice(0, 4);
+            $taggedPosts[$tag] = $pool1->splice(0, 6);
         }
-
+       // dd($pool1);
         // Пул 2: 2 элемента
         $pool2 = $posts->splice(0, 2);
        // dd($pool2);

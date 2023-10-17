@@ -77,18 +77,21 @@
                             <!-- Details -->
                             @if(isset($pool2))
                             @foreach($pool2 as $post)
-                            <div class="most-recent mb-40">
-                                <div class="most-recent-img">
-                                    <img style="height: 180px;" src="{{ $post->urlToImage }}" alt="">
-                                    <div class="most-recent-cap">
-                                        <!--<span class="bgbeg">tst</span>-->
-                                        <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                        <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                    <div class="whats-news-single mb-40">
+                                        <div class="whates-img">
+                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                        </div>
+                                        <div class="whates-caption">
+                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                            <span>автор  {{ $post->author }}  -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
+                                            <p>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+
                             @endforeach
                             @endif
+                            <hr>
                             @if(isset($pool3))
                                 @foreach($pool3 as $post)
                             <!-- Single -->
@@ -109,9 +112,11 @@
             </div>
         </section>
         <!-- Whats New End -->
+
         @if(isset($pool4))
             <!--   Weekly3-News start -->
             <div class="weekly3-news-area pt-40 pb-75 gray-bg">
+
                 <div class="container">
                     <div class="weekly3-wrapper">
                         <div class="row">
