@@ -24,6 +24,7 @@ class IndexController extends Controller
 
         $offers = Cache::remember('offersMainCategoryGeneralIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
+                ->whereNotNull('urlToImage')
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->get();

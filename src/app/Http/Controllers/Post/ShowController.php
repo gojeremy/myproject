@@ -16,6 +16,7 @@ class ShowController extends Controller
         // Попробовать получить результат из кэша, если он там есть.
         $offers = Cache::remember('offersPostShow', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
+                ->whereNotNull('urlToImage')
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->get();
