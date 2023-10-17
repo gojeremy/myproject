@@ -36,7 +36,6 @@ class ShowController extends Controller
         // mobile offer
         $mobile_offer = $offers->splice(0, 1);
         // pool #1
-        dd($mobile_offer);
         $pool1 = $offers->splice(0, 2);
         // pool #2
         $pool2 = $offers->splice(0, 4);
