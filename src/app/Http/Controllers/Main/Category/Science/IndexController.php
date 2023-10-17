@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function __invoke(): View
     {
-        $posts = Cache::remember('postsMainCategoryScienceIndex', now()->addDay(), function () {
+        $posts = Cache::remember('postsMainCategoryScienceIndex', now()->addMinutes(5), function () {
             return Post::where('published', 1)
                 ->where('category', 'science')
                 ->orderBy('priority_id', 'desc')
@@ -22,7 +22,7 @@ class IndexController extends Controller
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
         // Cache::forget('postsMainCategoryScienceIndex');
 
-        $offers = Cache::remember('offersMainCategoryScienceIndex', now()->addDay(), function () {
+        $offers = Cache::remember('offersMainCategoryScienceIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])

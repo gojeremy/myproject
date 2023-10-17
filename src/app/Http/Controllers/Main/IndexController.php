@@ -14,7 +14,7 @@ class IndexController extends Controller
 {
     public function __invoke(): View
     {
-        $posts = Cache::remember('postsMainIndex', now()->addDay(), function () {
+        $posts = Cache::remember('postsMainIndex', now()->addMinutes(5), function () {
             return Post::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url', 'category'])
@@ -24,7 +24,7 @@ class IndexController extends Controller
        // Cache::forget('postsMainIndex');
 
 
-        $offers = Cache::remember('offersMainIndex', now()->addDay(), function () {
+        $offers = Cache::remember('offersMainIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])

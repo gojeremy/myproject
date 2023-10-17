@@ -14,7 +14,7 @@ class ShowController extends Controller
     public function __invoke(Post $post)
     {
         // Попробовать получить результат из кэша, если он там есть.
-        $offers = Cache::remember('offersPostShow', now()->addDay(), function () {
+        $offers = Cache::remember('offersPostShow', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])

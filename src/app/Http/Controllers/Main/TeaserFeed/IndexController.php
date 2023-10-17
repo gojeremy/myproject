@@ -12,7 +12,7 @@ class IndexController extends Controller
     public function __invoke(): View
     {
         // Попробовать получить результат из кэша, если он там есть.
-        $offers = Cache::remember('offersTeaserFeed', now()->addDay(), function () {
+        $offers = Cache::remember('offersTeaserFeed', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
