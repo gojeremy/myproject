@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Main'], function () {
         Route::get('/sports', [App\Http\Controllers\Main\Category\Sports\IndexController::class,'__invoke'])->name('main.category.sports.index');
         Route::get('/technology', [App\Http\Controllers\Main\Category\Technology\IndexController::class,'__invoke'])->name('main.category.technology.index');
         Route::get('/blog', [App\Http\Controllers\Main\Blog\IndexController::class,'__invoke'])->name('main.blog.index');
-        Route::get('/teaser-feed', [App\Http\Controllers\Main\TeaserFeed\IndexController::class,'__invoke'])->name('main.teaserfeed.index');
+        Route::get('/teasers-feed', [App\Http\Controllers\Main\TeaserFeed\IndexController::class,'__invoke'])->name('main.teaserfeed.index');
     });
 
 Route::group(['namespace' => 'Post'], function () {

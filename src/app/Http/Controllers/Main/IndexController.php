@@ -6,20 +6,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 
 
 class IndexController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
-        $posts = Post::where('published', 1)
-            // ->where('category', 'business')
-            ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
-            ->orderBy('priority_id', 'desc')
-            ->get();
-        $offers = Offer::where('published', 1)
-            ->orderBy('priority_id', 'desc')
-            ->get();
+        $posts = Cache::remember('postsMainIndex', now()->addDay(), function () {
+            return Post::where('published', 1)
+                ->orderBy('priority_id', 'desc')
+                ->select(['id', 'title', 'urlToImage', 'url', 'category'])
+                ->get();
+        });
+        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
+       // Cache::forget('postsMainIndex');
+
+
+        $offers = Cache::remember('offersMainIndex', now()->addDay(), function () {
+            return Offer::where('published', 1)
+                ->orderBy('priority_id', 'desc')
+                ->select(['id', 'title', 'urlToImage', 'url'])
+                ->get();
+        });
+        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
+     //   Cache::forget('offersMainIndex');
 
         $mobile_offer = $offers->take(1);
      //   dd($modal_offer);
@@ -45,7 +57,7 @@ class IndexController extends Controller
 
         // Пул 2: 2 элемента
         $pool2 = $posts->splice(0, 2);
-
+       // dd($pool2);
         // Пул 3: 6 элементов
         $pool3 = $posts->splice(0, 5);
 
@@ -53,7 +65,6 @@ class IndexController extends Controller
         $pool4 = $posts->filter(function ($post) {
             return $post->category == 'general';
         })->splice(0, 8);
-
         // Пул 5: 6 элементов
         $pool5 = $posts->splice(0, 6);
 

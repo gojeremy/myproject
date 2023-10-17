@@ -5,17 +5,31 @@ namespace App\Http\Controllers\Main\Category\Entertainment;
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class IndexController extends Controller
 {
     public function __invoke(): View
     {
-        $posts = Post::where('published', 1)
-            ->where('category', 'entertainment')
-            ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
-            ->orderBy('priority_id', 'desc')
-            ->paginate(27);
+        $posts = Cache::remember('postsMainCategoryEntertainmentIndex', now()->addDay(), function () {
+            return Post::where('published', 1)
+                ->where('category', 'entertainment')
+                ->orderBy('priority_id', 'desc')
+                ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
+                ->paginate(27);
+        });
+        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
+        // Cache::forget('postsMainCategoryEntertainmentIndex');
+
+        $offers = Cache::remember('offersMainCategoryEntertainmentIndex', now()->addDay(), function () {
+            return Offer::where('published', 1)
+                ->orderBy('priority_id', 'desc')
+                ->select(['id', 'title', 'urlToImage', 'url'])
+                ->get();
+        });
+        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
+        // Cache::forget('offersMainCategoryEntertainmentIndex');
 
         $tags = ['hot', 'popular', 'recommended'];
         $taggedPosts = [];
@@ -23,10 +37,6 @@ class IndexController extends Controller
         foreach ($tags as $tag) {
             $taggedPosts[$tag] = $posts->splice(0, 9); // Берем первые 27 элементов (посты в порядке)
         }
-
-        $offers = Offer::where('published', 1)
-            ->orderBy('priority_id', 'desc')
-            ->get();
 
         $mobile_offer = $offers->take(1);
         //   dd($modal_offer);

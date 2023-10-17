@@ -6,16 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
+use Illuminate\Support\Facades\Cache;
 
 
 class ShowController extends Controller
 {
     public function __invoke(Post $post)
     {
-        $offers = Offer::where('published', 1)
-            ->select(['id', 'title', 'urlToImage', 'url', 'content', 'category'])
-            ->orderBy('priority_id', 'desc')
-            ->get();
+        // Попробовать получить результат из кэша, если он там есть.
+        $offers = Cache::remember('offersPostShow', now()->addDay(), function () {
+            return Offer::where('published', 1)
+                ->orderBy('priority_id', 'desc')
+                ->select(['id', 'title', 'urlToImage', 'url'])
+                ->get();
+        });
+        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
+        // Cache::forget('offersPostShow');
 
         // Инициализируем массивы для пулов
         $desctop_offers = [];
