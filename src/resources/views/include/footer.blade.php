@@ -34,7 +34,7 @@
                                     <img style="height: 90px;" src="{{ $post->urlToImage }}" alt="image">
                                 </div>
                                 <div class="whats-right-cap">
-                                    <h4><a href="latest_news.html">{{ $post->title }}</a></h4>
+                                    <h4><a href="#">{{ $post->title }}</a></h4>
                                     <p>Jhon  |  2 hours ago</p>
                                 </div>
                             </div>
