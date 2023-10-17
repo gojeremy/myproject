@@ -35,8 +35,8 @@ class IndexController extends Controller
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
         Cache::forget('offersMainIndex');
 
-        $mobile_offer = $offers->first();
-        $desctop_offers = $offers->take(6);
+        $mobile_offer = $offers->splice(0, 1);
+        $desctop_offers = $offers->splice(0, 6);
         // Инициализируем массивы для пулов
         $pool1 = [];
         $pool2 = [];

@@ -21,8 +21,9 @@ class IndexController extends Controller
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
          Cache::forget('offersTeaserFeed');
 
-        $mobile_offer = $offers->take(1);
-        $desktop_offers = $offers->take(6);
+        $mobile_offer = $offers->splice(0, 1);
+
+        $desktop_offers = $offers->splice(0, 6);
         // footer: 3 элемента
         $footer = $offers->take(3);
 

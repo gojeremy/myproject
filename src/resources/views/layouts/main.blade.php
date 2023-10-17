@@ -50,10 +50,10 @@
                             @if(isset($mobile_offer))
                             <div class="trending-top">
                                 <div class="trend-top-img">
-                                    <img class="h-280 w-100 mx-auto" style="object-fit: cover; border-radius: 3px;" src="{{ $mobile_offer->urlToImage}}" alt="image">
+                                    <img class="h-280 w-100 mx-auto" style="object-fit: cover; border-radius: 3px;" src="{{ $mobile_offer->first()->urlToImage }}" alt="image">
                                     <div class="trend-top-cap trend-top-cap2 mt-2 mx-3">
-                                        <a href="{{ $mobile_offer->title }}" target="_blank">
-                                            <p>{{ $mobile_offer->title }}</p>
+                                        <a href="{{ $mobile_offer->first()->title }}" target="_blank">
+                                            <p>{{ $mobile_offer->first()->title }}</p>
                                         </a>
                                     </div>
                                 </div>

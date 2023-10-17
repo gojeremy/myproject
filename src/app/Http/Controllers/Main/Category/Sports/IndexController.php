@@ -39,9 +39,9 @@ class IndexController extends Controller
             $taggedPosts[$tag] = $posts->splice(0, 9); // Берем первые 27 элементов (посты в порядке)
         }
 
-        $mobile_offer = $offers->take(1);
+        $mobile_offer = $offers->splice(0, 1);
         //   dd($modal_offer);
-        $desctop_offers = $offers->take(6);
+        $desctop_offers = $offers->splice(0, 6);
 
         // footer: 3 элемента
         $footer_posts = Post::all();
