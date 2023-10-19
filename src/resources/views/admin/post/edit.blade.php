@@ -100,7 +100,18 @@
                                     </div>
                                     <div class="form-group w-100">
                                         <label>urlToImage</label>
-                                        <input type="text" class="form-control" name="urlToImage" placeholder="urlToImage" value="{{ $post->urlToImage }}">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="urlToImage" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
+                                        <div class="image_preview mt-3">
+                                            <img src="{{ asset('storage/'. $post->urlToImage) }}" style="height:250px;" alt="image">
+                                        </div>
                                         @error('urlToImage')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror

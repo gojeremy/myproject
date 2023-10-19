@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'nullable|string',
-            'urlToImage' => 'nullable|string',
+            'urlToImage' => 'required|file',
             'url' => 'nullable|string',
             'priority_id' => 'nullable|integer',
             'category' => 'nullable|string',
@@ -40,7 +40,7 @@ class StoreRequest extends FormRequest
             'content.required' => 'Это поле необходимо для заполнения',
             'content.string' => 'Данные должны соответствовать строчному типу',
             'urlToImage.required' => 'Это поле необходимо для заполнения',
-            'urlToImage.string' => 'Данные должны соответствовать строчному типу',
+            'urlToImage.file' => 'Данные должны соответствовать строчному типу',
             'url.string' => 'Данные должны соответствовать строчному типу',
             'priority_id.integer' => 'Данные должны соответствовать строчному типу',
             'category.required' => 'Это поле необходимо для заполнения',

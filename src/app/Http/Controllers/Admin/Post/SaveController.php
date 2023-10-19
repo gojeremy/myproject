@@ -24,7 +24,7 @@ class SaveController extends BaseController
                 'author' => $requestData['author'] ?? null,
                 'title' => $requestData['title'],
                 'description' => $requestData['description'],
-                'url' => $requestData['url'],
+                'url' => $requestData['url'] ?? null,
                 'urlToImage' => $requestData['urlToImage'],
                 'content' => $requestData['content'],
                 'source_id' => $requestData['source']['id'] ?? null,
@@ -34,7 +34,7 @@ class SaveController extends BaseController
             // Вызываем метод сервиса для сохранения данных
             try {
                 // Отправка данных в ваш сервис
-                $this->service->store($data);
+                $this->service->save($data);
                 Log::info('Данные успешно сохранены');
                 return response()->json(['message' => 'Статья успешно сохранена'], 200);
             } catch (\Exception $e) {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Cache;
@@ -12,6 +11,9 @@ use Illuminate\View\View;
 
 class IndexController extends Controller
 {
+    /**
+     * @return View
+     */
     public function __invoke(): View
     {
         $posts = Cache::remember('postsMainIndex', now()->addMinutes(5), function () {
@@ -20,9 +22,8 @@ class IndexController extends Controller
                 ->select(['id', 'title', 'urlToImage', 'url', 'category'])
                 ->get();
         });
-        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-        Cache::forget('postsMainIndex');
 
+        Cache::forget('postsMainIndex');
 
         $offers = Cache::remember('offersMainIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
@@ -37,16 +38,6 @@ class IndexController extends Controller
 
         $mobile_offer = $offers->splice(0, 1);
         $desctop_offers = $offers->splice(0, 6);
-        // Инициализируем массивы для пулов
-        $pool1 = [];
-        $pool2 = [];
-        $pool3 = [];
-        $pool4 = [];
-        $pool5 = [];
-        $pool6 = [];
-        $pool7 = [];
-        $pool8 = [];
-        $pool9 = [];
 
         // Пул 1: 20 элементов
         $pool1 = $posts->splice(0, 18);

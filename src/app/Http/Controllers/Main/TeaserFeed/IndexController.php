@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
+    /**
+     * @return View
+     */
     public function __invoke(): View
     {
         // Попробовать получить результат из кэша, если он там есть.
@@ -18,15 +21,17 @@ class IndexController extends Controller
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->paginate(12);
         });
+
+
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
          Cache::forget('offersTeaserFeed');
 
         $mobile_offer = $offers->splice(0, 1);
 
-        $desktop_offers = $offers->splice(0, 6);
+        $desctop_offers = $offers->splice(0, 6);
         // footer: 3 элемента
         $footer = $offers->take(3);
 
-        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desktop_offers'));
+        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desctop_offers', 'footer'));
     }
 }

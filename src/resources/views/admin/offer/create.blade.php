@@ -54,8 +54,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="content">urlToImage</label>
-                                        <input type="text" class="form-control" name="urlToImage" placeholder="urlToImage">
+                                        <label for="exampleInputFile">File input</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="urlToImage" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
                                         @error('urlToImage')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror

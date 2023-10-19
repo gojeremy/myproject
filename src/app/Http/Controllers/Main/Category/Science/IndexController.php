@@ -2,51 +2,12 @@
 
 namespace App\Http\Controllers\Main\Category\Science;
 
-use App\Http\Controllers\Controller;
-use App\Models\Offer;
-use App\Models\Post;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\View\View;
+use App\Http\Controllers\Main\Category\BaseController;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
-    public function __invoke(): View
+    public function __construct()
     {
-        $posts = Cache::remember('postsMainCategoryScienceIndex', now()->addMinutes(5), function () {
-            return Post::where('published', 1)
-                ->where('category', 'science')
-                ->orderBy('priority_id', 'desc')
-                ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
-                ->paginate(27);
-        });
-        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-         Cache::forget('postsMainCategoryScienceIndex');
-
-        $offers = Cache::remember('offersMainCategoryScienceIndex', now()->addMinutes(5), function () {
-            return Offer::where('published', 1)
-                ->whereNotNull('urlToImage')
-                ->orderBy('priority_id', 'desc')
-                ->select(['id', 'title', 'urlToImage', 'url'])
-                ->get();
-        });
-        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-         Cache::forget('offersMainCategoryScienceIndex');
-
-        $tags = ['hot', 'popular', 'recommended'];
-        $taggedPosts = [];
-
-        foreach ($tags as $tag) {
-            $taggedPosts[$tag] = $posts->splice(0, 9); // Берем первые 27 элементов (посты в порядке)
-        }
-
-        $mobile_offer = $offers->splice(0, 1);
-        //   dd($modal_offer);
-        $desctop_offers = $offers->splice(0, 6);
-
-        // footer: 3 элемента
-        $footer_posts = Post::all();
-        $footer = $footer_posts->take(3);
-
-        return view('main.category.science.index', compact('taggedPosts', 'tags', 'posts', 'mobile_offer', 'desctop_offers', 'footer'));
+        parent::__construct('science');
     }
 }

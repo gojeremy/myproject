@@ -23,6 +23,7 @@ class CreateController extends BaseController
         $languages = $newsApi->getLanguages();
 
         $sources = Source::all();
+
         return view('admin.post.create', compact( 'categories', 'countries', 'languages', 'sources'));
     }
 }

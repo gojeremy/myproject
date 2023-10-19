@@ -17,11 +17,14 @@
     <!-- Theme style -->
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -109,7 +112,7 @@
 <!-- Summernote -->
 <script src="{{ asset('/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js/') }}"></script>
-
+<script src="{{ asset('/plugins/toastr/toastr.min.js/') }}"></script>
 @yield('table-search-source')
 @yield('script-delete')
 <script>
@@ -139,5 +142,6 @@
 </style>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 </html>

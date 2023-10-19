@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'nullable|string',
             'content' => 'nullable|string',
-            'urlToImage' => 'nullable|string',
+            'urlToImage' => 'nullable|file',
             'url' => 'nullable|string',
             'priority_id' => 'nullable|integer',
             'published' => 'nullable|integer',

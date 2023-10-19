@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // main
 Route::group(['namespace' => 'Main'], function () {
         Route::get('/', [App\Http\Controllers\Main\IndexController::class,'__invoke'])->name('main.index');
+
         Route::get('/business', [\App\Http\Controllers\Main\Category\Business\IndexController::class,'__invoke'])->name('main.category.business.index');
         Route::get('/entertainment', [App\Http\Controllers\Main\Category\Entertainment\IndexController::class,'__invoke'])->name('main.category.entertainment.index');
         Route::get('/general', [App\Http\Controllers\Main\Category\General\IndexController::class,'__invoke'])->name('main.category.general.index');

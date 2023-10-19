@@ -15,13 +15,8 @@ class UpdateController extends BaseController
      */
     public function __invoke(UpdateRequest $request, Post $post): RedirectResponse
     {
-
-
         $data = $request->validated();
-     //   dd($data);
-        $this->service->update($data, $post);
-
-
-        return redirect()->route('admin.post.index');
+        $post = $this->service->update($data, $post);
+        return redirect()->route('admin.post.edit', ['post' => $post->id]);
     }
 }

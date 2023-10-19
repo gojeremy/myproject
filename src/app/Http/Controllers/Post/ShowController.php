@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\View\View;
 
 class ShowController extends Controller
 {
-    public function __invoke(Post $post)
+    /**
+     * @param Post $post
+     * @return View
+     */
+    public function __invoke(Post $post): View
     {
         // Попробовать получить результат из кэша, если он там есть.
         $offers = Cache::remember('offersPostShow', now()->addMinutes(5), function () {

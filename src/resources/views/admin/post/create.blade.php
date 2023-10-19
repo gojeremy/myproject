@@ -95,17 +95,27 @@
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group w-100">
-                                        <label>urlToImage</label>
-                                        <input type="text" class="form-control" name="urlToImage" placeholder="urlToImage" value="{{ old('urlToImage') }}">
+
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">File input</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="urlToImage" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
                                         @error('urlToImage')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="form-group w-100">
                                         <label>url</label>
                                         <input type="text" class="form-control" name="url" placeholder="url" value="{{ old('url') }}">
-                                        @error('urlToImage')
+                                        @error('url')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -114,7 +124,7 @@
                                             <label>Priority</label>
                                             <select class="form-control" name="priority_id">
                                                 <option value="0">off</option>
-                                                <option value="1">onn</option>
+                                                <option value="1">on</option>
                                             </select>
                                         </div>
                                         @error('priority_id')

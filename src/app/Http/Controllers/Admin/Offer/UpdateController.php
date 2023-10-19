@@ -16,7 +16,7 @@ class UpdateController extends BaseController
     public function __invoke(UpdateRequest $request, Offer $offer): RedirectResponse
     {
         $data = $request->validated();
-        $this->service->update($data, $offer);
-        return redirect()->route('admin.offer.index');
+        $offer = $this->service->update($data, $offer);
+        return redirect()->route('admin.offer.edit', ['offer' => $offer->id]);
     }
 }
