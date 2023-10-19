@@ -78,7 +78,7 @@
                                             @csrf
                                             <div class="form-group">
                                                 <label for="q">keyword</label>
-                                                <input type="text" class="form-control" name="q" placeholder="Enter keyword">
+                                                <input type="text" class="form-control" name="q" placeholder="Enter keyword" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Multiple</label>

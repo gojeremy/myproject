@@ -48,16 +48,18 @@
                     <div class="mobile-content">
                         <div class="row d-flex justify-content-center align-items-center">
                             @if(isset($mobile_offer))
+                                @foreach($mobile_offer as $offer)
                             <div class="trending-top">
                                 <div class="trend-top-img">
-                                    <img class="h-280 w-100 mx-auto" style="object-fit: cover; border-radius: 3px;" src="{{ $mobile_offer->first()->urlToImage }}" alt="image">
+                                    <img class="h-280 w-100 mx-auto" style="object-fit: cover; border-radius: 3px;" src="{{ asset('storage/'.  $offer->urlToImage) }}" alt="image">
                                     <div class="trend-top-cap trend-top-cap2 mt-2 mx-3">
-                                        <a href="{{ $mobile_offer->first()->title }}" target="_blank">
-                                            <p>{{ $mobile_offer->first()->title }}</p>
+                                        <a href="{{ $offer->url }}" target="_blank">
+                                            <p>{{ $offer->title }}</p>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                                @endforeach
                                 @endif
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                                     <div class="whates-img">
                                         <img style="width: 230px;
     height: 140px; /* Задайте висоту, яка вам потрібна */
-    object-fit: cover; border-radius: 7px;" src="{{ $offer->urlToImage }}" alt="image">
+    object-fit: cover; border-radius: 7px;" src="{{ asset('storage/'.  $offer->urlToImage) }}" alt="image">
                                     </div>
                                     <div class="trend-top-cap trend-top-cap2 ">
                                         <a href="{{ $offer->url }}" target="_blank">

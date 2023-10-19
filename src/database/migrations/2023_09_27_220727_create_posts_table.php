@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('author')->nullable();
             $table->string('title');
             $table->text('description');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('urlToImage');
             $table->string('language')->nullable();
             $table->string('country')->nullable();
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->unsignedBigInteger('priority_id')->nullable();
             $table->integer('published')->default(0);
             $table->string('category')->nullable();

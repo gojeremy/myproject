@@ -137,14 +137,12 @@
                     button.addClass('completed-action btn-success');
                     button.text('Поиск выполнен');
 
-                    // Показываем уведомление об успешном поиске
-                    showToast('bg-success', 'Успех', 'Поиск выполнен успешно.', 500);
+                    showNotification('success', 'Успех', 'Поиск выполнен успешно.');
                 } else {
                     button.addClass('btn-danger');
                     button.text('Пустой ответ');
 
-                    // Показываем уведомление о пустом результате
-                    showToast('bg-warning', 'Внимание', 'Пустой ответ на поиск.');
+                    showNotification('warning', 'Внимание', 'Пустой ответ на поиск.');
                 }
 
                 $.each(response.sources, function (index, source) {
@@ -158,8 +156,7 @@
                 $('#error-message').text(errorMessage);
                 console.log(data);
 
-                // Показываем уведомление об ошибке
-                showToast('bg-danger', 'Ошибка', errorMessage);
+                showNotification('error', 'Ошибка', errorMessage);
             }
 
             function handleSaveButtonClick() {
@@ -185,8 +182,7 @@
                         button.removeClass('btn-outline-secondary').addClass('completed-action btn-success');
                         button.text('added');
 
-                        // Показываем уведомление об успешном сохранении
-                        showToast('bg-success', 'Успех', 'Данные успешно сохранены.');
+                        showNotification('success', 'Успех', 'Данные успешно сохранены.');
                     },
                     error: function (xhr, status, errorThrown) {
                         var errorMessage = 'Ошибка при сохранении данных: ' + errorThrown;
@@ -194,20 +190,16 @@
                         button.removeClass('btn-outline-secondary').addClass('btn-danger');
                         button.text('error');
 
-                        // Показываем уведомление об ошибке
-                        showToast('bg-danger', 'Ошибка', errorMessage);
+                        showNotification('error', 'Ошибка', errorMessage);
                     }
                 });
             }
 
-            function showToast(toastClass, title, body, delay) {
-                $(document).Toasts('create', {
-                    class: toastClass,
-                    title: title,
-                    body: body,
-                    delay: delay
-                });
+            function showNotification(type, title, message) {
+                toastr[type](message, title);
             }
         });
     </script>
+
+
 @endsection

@@ -38,6 +38,7 @@ class IndexController extends Controller
 
         $mobile_offer = $offers->splice(0, 1);
         $desctop_offers = $offers->splice(0, 6);
+     //   dd($mobile_offer);
 
         // Пул 1: 20 элементов
         $pool1 = $posts->splice(0, 18);

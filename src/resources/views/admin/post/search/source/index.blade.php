@@ -173,20 +173,12 @@
                 if (Array.isArray(response.articles) && response.articles.length > 0) {
                     button.removeClass('btn-outline-secondary');
                     button.addClass('completed-action btn-success').text('Поиск выполнен');
-                    // Добавляем уведомление о успешном поиске
-                    $(document).Toasts('create', {
-                        class: 'bg-success',
-                        title: 'Успех',
-                        body: 'Поиск выполнен успешно.'
-                    });
+
+                    showNotification('success', 'Успех', 'Поиск выполнен успешно.');
                 } else {
                     button.addClass('btn-block btn-warning').text('Пустой ответ');
-                    // Добавляем уведомление о пустом результате
-                    $(document).Toasts('create', {
-                        class: 'bg-warning',
-                        title: 'Внимание',
-                        body: 'Пустой ответ на поиск.'
-                    });
+
+                    showNotification('warning', 'Внимание', 'Пустой ответ на поиск.');
                 }
 
                 $.each(response.articles, function (index, article) {
@@ -205,7 +197,6 @@
                 </tr>`;
                     resultTable.append(newRow);
                 });
-
                 setTimeout(resetButton, 3000);
             }
 
@@ -213,13 +204,13 @@
                 const errorMessage = 'Ошибка при выполнении поиска: ' + errorThrown;
                 $('#error-message').text(errorMessage);
                 button.addClass('btn-danger').text('error');
-                // Добавляем уведомление об ошибке поиска
-                $(document).Toasts('create', {
-                    class: 'bg-danger',
-                    title: 'Ошибка',
-                    body: 'Ошибка при выполнении поиска: ' + errorThrown
-                });
                 setTimeout(resetButton, 3000);
+
+                showNotification('error', 'Ошибка', 'Ошибка при выполнении поиска: ' + errorThrown);
+            }
+
+            function showNotification(type, title, message) {
+                toastr[type](message, title);
             }
 
             function generateInputFields(article) {
@@ -261,29 +252,22 @@
                 console.log('Статья успешно сохранена');
                 console.log(response);
                 button.removeClass('btn-outline-secondary').addClass('completed-action btn-success').text('added');
-                // Добавляем уведомление об успешном сохранении статьи
-                $(document).Toasts('create', {
-                    class: 'bg-success',
-                    title: 'Успех',
-                    body: 'Статья успешно сохранена.'
-                });
+
+                showNotification('success', 'Успех', 'Статья успешно сохранена.');
             }
 
             function handleSaveError(error, button) {
                 console.error('Ошибка при сохранении статьи: ' + error);
                 button.removeClass('btn-outline-secondary').addClass('btn-danger').text('error');
-                // Добавляем уведомление об ошибке сохранения статьи
-                $(document).Toasts('create', {
-                    class: 'bg-danger',
-                    title: 'Ошибка',
-                    body: 'Ошибка при сохранении статьи: ' + error
-                });
+
+                showNotification('error', 'Ошибка', 'Ошибка при сохранении статьи: ' + error);
             }
 
             function resetButton() {
                 button.removeClass('btn-success completed-action btn-block btn-warning btn-danger');
                 button.addClass('btn-outline-secondary').text('Search');
             }
+
             resultTable.on('click', '.view-button', function () {
                 const row = $(this).closest('tr');
                 const articleData = {
@@ -332,4 +316,5 @@
             });
         });
     </script>
+
 @endsection
