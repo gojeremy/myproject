@@ -82,9 +82,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-default toastsDefaultDefault">
-                                    Launch Default Toast
-                                </button>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-outline-secondary action-button_1">Поиск</button>
                                 </div>
