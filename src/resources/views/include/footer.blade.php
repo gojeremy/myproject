@@ -4,23 +4,7 @@
         <div class="footer-area footer-padding">
             <div class="container">
                 <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
-                        <div class="single-footer-caption mb-50">
-                            <div class="single-footer-caption mb-30">
-                                <!-- logo -->
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
                         @if(isset($footer))
                         <div class="single-footer-caption mb-50">
@@ -31,21 +15,50 @@
                             <!-- Popular post -->
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img style="height: 90px;" src="{{ $post->urlToImage }}" alt="image">
+                                    <img style="width: 100px;" src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                 </div>
                                 <div class="whats-right-cap">
-                                    <h4><a href="#">{{ $post->title }}</a></h4>
-                                    <p>Jhon  |  2 hours ago</p>
+                                    <h4><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
+                                    <p> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</p>
                                 </div>
                             </div>
                             @endforeach
                         </div>
+                        @endif
+                            @if(isset($footer_offers))
+                                <div class="single-footer-caption mb-50">
+                                    <div class="footer-tittle">
+                                        <h4>Popular post</h4>
+                                    </div>
+                                    @foreach($footer_offers as $post)
+                                        <!-- Popular post -->
+                                        <div class="whats-right-single mb-20">
+                                            <div class="whats-right-img">
+                                                <img style="width: 100px;" src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                            </div>
+                                            <div class="whats-right-cap">
+                                                <h4><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h4>
+                                                <p> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             @endif
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
                         <div class="single-footer-caption mb-50">
-                            <div class="banner">
-                                <img src="assets/img/gallery/body_card4.png" alt="">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png') }}" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
+                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

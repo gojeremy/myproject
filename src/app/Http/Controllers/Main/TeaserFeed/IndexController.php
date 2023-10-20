@@ -19,9 +19,8 @@ class IndexController extends Controller
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
-                ->paginate(12);
+                ->paginate(16);
         });
-
 
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
          Cache::forget('offersTeaserFeed');
@@ -30,8 +29,8 @@ class IndexController extends Controller
 
         $desctop_offers = $offers->splice(0, 6);
         // footer: 3 элемента
-        $footer = $offers->take(3);
+        $footer_offers = $offers->take(3);
 
-        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desctop_offers', 'footer'));
+        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desctop_offers', 'footer_offers'));
     }
 }

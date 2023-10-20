@@ -22,33 +22,20 @@ class ShowController extends Controller
                 ->whereNotNull('urlToImage')
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
-                ->get();
+                ->paginate(22);
         });
         // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
          Cache::forget('offersPostShow');
 
-        // Инициализируем массивы для пулов
-        $desctop_offers = [];
-        $pool1 = [];
-        $pool2 = [];
-        $pool3 = [];
-        $pool4 = [];
-
+         // pool
+         $pool = $offers->splice(0, 3);
         // desctop offers
-        $desctop_offers = $offers->splice(0, 2);
+        $desctop_offers = $offers->splice(0, 9);
         // mobile offer
         $mobile_offer = $offers->splice(0, 1);
-        // pool #1
-        $pool1 = $offers->splice(0, 2);
-        // pool #2
-        $pool2 = $offers->splice(0, 4);
-        // pool #3
-        $pool3 = $offers->splice(0, 6);
-        // pool #4
-        $pool4 = $offers->splice(0, 6);
         // footer
-        $footer = $offers->splice(0, 3);
-
-        return view('post.show', compact('post', 'desctop_offers', 'mobile_offer', 'pool1', 'pool2', 'pool3', 'pool4', 'footer'));
+        $footer_offers = $offers->splice(0, 3);
+      // dd($offers);
+        return view('post.show', compact('post', 'pool', 'desctop_offers', 'mobile_offer', 'footer_offers', 'offers'));
     }
 }

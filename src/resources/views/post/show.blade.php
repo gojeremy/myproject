@@ -15,8 +15,7 @@
                                 <h3>{{ $post->title }}</h3>
                             </div>
                             <div class="about-prea mb-3">
-                                <span class="about-pera1 ">Автор - {{ $post->author }}</span><br>
-                                <span class="about-pera1 ">Дата публикации - {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                <span class="about-pera1 ">{{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span><br>
                             </div>
 
                             <div class="about-prea">
@@ -75,29 +74,16 @@
                                 <h4>Most Recent</h4>
                             </div>
                             <!-- Details -->
-                            @if(isset($pool1))
-                                @foreach($pool1 as $offer)
-                            <div class="most-recent mb-40">
-                                <div class="most-recent-img">
-                                    <img style="height:180px;" src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
-                                    <div class="most-recent-cap">
-                                        <!--<span class="bgbeg">Vogue</span>-->
-                                        <h4><a href="latest_news.html">{{ $offer->title }}</a></h4>
+                            @if(isset($pool))
+                                @foreach($pool as $offer)
+                                    <div class="whats-news-single mb-40">
+                                        <div class="whates-img">
+                                            <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
+                                        </div>
+                                        <div class="whates-caption">
+                                            <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                                @endforeach
-                            @endif
-                            @if(isset($pool2))
-                                @foreach($pool2 as $offer)
-                            <!-- Single -->
-                            <div class="most-recent-single">
-
-                                <div class="most-recent-capt">
-                                    <h4><a href="{{ $offer->url }}">{{ $offer->title }}</a></h4>
-
-                                </div>
-                            </div>
                                 @endforeach
                             @endif
                         </div>
@@ -106,94 +92,61 @@
                 </div>
             </div>
         </div>
-        <!-- About US End -->
-        @if(isset($pool3))
-        <!--   Weekly3-News start -->
-        <div class="weekly3-news-area pt-80 pb-130">
-            <div class="container">
-                <div class="weekly3-wrapper">
+        @if(isset($offers))
+            <section class="whats-news-area pt-50 pb-20 gray-bg">
+                <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
-                                <div class="title"><h3>Общее</h3></div>
-                                <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="slider-wrapper">
-                                <!-- Slider -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="weekly3-news-active dot-style d-flex">
-
-                                            @foreach($pool3 as $offer)
-                                                <div class="weekly3-single">
-                                                    <div class="weekly3-img">
-                                                        <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
-                                                    </div>
-                                                    <div class="weekly3-caption">
-                                                        <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                            <div class="whats-news-wrapper">
+                                <!-- Heading & Nav Button -->
+                                <div class="row justify-content-between align-items-end mb-15 mx-2">
+                                    <div class="section-tittle">
+                                        <h3>Инсайд</h3>
+                                    </div>
+                                    <div class="section-tittle">
+                                        <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--   End Weekly3-News -->
-        @endif
-        @if(isset($pool4))
-        <!--   Weekly2-News start -->
-        <div class="weekly2-news-area pt-50 pb-30 gray-bg">
-            <div class="container">
-                <div class="weekly2-wrapper">
-                    <div class="row">
-                        <div class="col">
-                            <div class="slider-wrapper">
-                                <!-- section Tittle -->
+                                <!-- Tab content -->
                                 <div class="row">
-                                    <div class="col d-flex justify-content-between align-items-center">
-                                        <div class="small-tittle mb-30">
-                                            <h4>Тенденции</h4>
-                                        </div>
-                                        <div class="small-tittle mb-30">
-                                            <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slider -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="weekly2-news-active d-flex">
-                                            @foreach($pool4 as $offer)
-                                            <!-- Single -->
-                                            <div class="weekly2-single">
-                                                <div class="weekly2-img">
+                                    @foreach($offers as $offer)
+                                        <div class="col-sm-6">
+                                            <div class="whats-news-single mb-40 mb-40">
+                                                <div class="whates-img">
                                                     <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
                                                 </div>
-                                                <div class="weekly2-caption">
-                                                    <h4><a href="#">{{ $offer->title }}</a></h4>
+                                                <div class="whates-caption">
+                                                    <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
 
                                                 </div>
                                             </div>
-                                            @endforeach
                                         </div>
-                                    </div>
+                                    @endforeach
+
                                 </div>
+                                <!-- End Nav Card -->
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>
+
+        <!--Start pagination -->
+        <div class="pagination-area  gray-bg pb-45">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap">
+                            {{ $offers->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Weekly-News -->
-            @endif
+        <!-- End pagination  -->
+        @endif
     </main>
 @endsection

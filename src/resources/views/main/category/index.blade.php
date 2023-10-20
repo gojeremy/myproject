@@ -46,7 +46,7 @@
                                                                 </div>
                                                                 <div class="whates-caption whates-caption2">
                                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                                    <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
+                                                                    <span>автор {{ $post->author }} | {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
                                                                     <p></p>
                                                                 </div>
                                                             </div>

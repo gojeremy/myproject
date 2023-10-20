@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <main>
+
         @if(isset($offers))
             <!-- Trending Area Start -->
             <div class="trending-area fix pt-25 gray-bg">
@@ -13,7 +14,7 @@
                                         <div class="col-md-4">
                                             <div class="whats-news-single mb-40 mb-40">
                                                 <div class="whates-img">
-                                                    <img src="{{ $offer->urlToImage }}" alt="Image" style="width: 100%;
+                                                    <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="Image" style="width: 100%;
     height: 300px; /* Задайте висоту, яка вам потрібна */
     object-fit: cover;" src="{{ $offer->urlToImage }}">
                                                 </div>

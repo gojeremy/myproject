@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <main>
-
         <!-- Whats New Start -->
         <section class="whats-news-area pt-50 pb-20 gray-bg">
             <div class="container">
@@ -43,12 +42,12 @@
                                                 @foreach($taggedPosts[$tag] as $post)
                                                 <div class="col-xl-6 col-lg-12">
                                                     <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
+                                                        <div class="whates-img w-100">
                                                             <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                         </div>
                                                         <div class="whates-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                             <p>{{ Str::limit($post->description, $limit = 115, $end = '...') }}
                                                             </p>
                                                         </div>
@@ -79,11 +78,11 @@
                             @foreach($pool2 as $post)
                                     <div class="whats-news-single mb-40">
                                         <div class="whates-img">
-                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                             <p>
                                             </p>
                                         </div>
@@ -94,16 +93,15 @@
                             <hr>
                             @if(isset($pool3))
                                 @foreach($pool3 as $post)
-                            <!-- Single -->
-                            <div class="most-recent-single">
-                                <!--<div class="most-recent-images">
-                                    <img src="" style="max-width: 65px;" alt="image">
-                                </div>-->
-                                <div class="most-recent-capt">
-                                    <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
-                                </div>
-                            </div>
+                                    <div class="whats-news-single mb-40">
+
+                                        <div class="whates-caption">
+                                            <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
+                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                            <p>
+                                            </p>
+                                        </div>
+                                    </div>
                                 @endforeach
                             @endif
                         </div>
@@ -141,7 +139,7 @@
                                                         </div>
                                                         <div class="weekly3-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -182,11 +180,11 @@
                                             <!-- Single -->
                                             <div class="weekly2-single">
                                                 <div class="weekly2-img">
-                                                    <img src="{{ $post->urlToImage }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                 </div>
                                                 <div class="weekly2-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                    <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -225,11 +223,11 @@
                                                 @foreach($pool6 as $post)
                                                     <div class="weekly3-single">
                                                         <div class="weekly3-img">
-                                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                         </div>
                                                         <div class="weekly3-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -265,11 +263,11 @@
                                 <div class="col-sm-6">
                                     <div class="whats-news-single mb-40 mb-40">
                                         <div class="whates-img">
-                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                            <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                             <p>{{ $post->description }}
                                             </p>
                                         </div>
@@ -313,11 +311,11 @@
                                                 <!-- Single -->
                                                 <div class="weekly2-single">
                                                     <div class="weekly2-img">
-                                                        <img src="{{ $post->urlToImage }}" alt="image">
+                                                        <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                     </div>
                                                     <div class="weekly2-caption">
                                                         <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                        <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                        <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -356,11 +354,11 @@
                                             @foreach($pool7 as $post)
                                             <div class="weekly3-single">
                                                 <div class="weekly3-img">
-                                                    <img src="{{ $post->urlToImage }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                 </div>
                                                 <div class="weekly3-caption">
-                                                    <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
+                                                    <h6><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h6>
+                                                    <span> {{ $post->author }} | {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                 </div>
                                             </div>
                                             @endforeach
