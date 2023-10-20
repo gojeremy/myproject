@@ -63,22 +63,11 @@ class PostService
 
     public function save($data)
     {
-        try {
-            DB::beginTransaction();
-            $imageUrl = $data['urlToImage'];
-            $imagePath = $this->downloadAndSaveImage($imageUrl);
-
-            if ($imagePath !== null) {
-                $data['urlToImage'] = $imagePath;
-                $post = Post::firstOrCreate($data);
-                DB::commit();
-            } else {
-                DB::rollBack();
-                abort(500); // Ошибка при загрузке или пустое изображение
-            }
-        } catch (\Exception $exception) {
-            DB::rollBack();
-            abort(500); // Ошибка во время обработки
+        DB::beginTransaction();
+        if (!empty($data['urlToImage'])) {
+            $data['urlToImage'] = $this->downloadAndSaveImage($data['urlToImage']);
         }
+        Post::firstOrCreate($data);
+        DB::commit();
     }
 }

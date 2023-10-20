@@ -7,19 +7,16 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
-                        <div class="about-right mb-90">
+                        <div class="about-right mb-40">
                             <div class="about-img">
-                                <img src="{{ $post->urlToImage }}" alt="image">
+                                <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                             </div>
                             <div class="heading-news mb-30 pt-30">
                                 <h3>{{ $post->title }}</h3>
                             </div>
                             <div class="about-prea mb-3">
-                                <span class="about-pera1 ">автор - {{ $post->author }}</span>
-                            </div>
-
-                            <div class="about-prea">
-                                <p class="about-pera1 mb-25">{{ $post->content }}</p>
+                                <span class="about-pera1 ">Автор - {{ $post->author }}</span><br>
+                                <span class="about-pera1 ">Дата публикации - {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                             </div>
 
                             <div class="about-prea">
@@ -82,7 +79,7 @@
                                 @foreach($pool1 as $offer)
                             <div class="most-recent mb-40">
                                 <div class="most-recent-img">
-                                    <img style="height:180px;" src="{{ $offer->urlToImage }}" alt="image">
+                                    <img style="height:180px;" src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
                                     <div class="most-recent-cap">
                                         <!--<span class="bgbeg">Vogue</span>-->
                                         <h4><a href="latest_news.html">{{ $offer->title }}</a></h4>
@@ -97,7 +94,7 @@
                             <div class="most-recent-single">
 
                                 <div class="most-recent-capt">
-                                    <h4><a href="latest_news.html">{{ $offer->title }}</a></h4>
+                                    <h4><a href="{{ $offer->url }}">{{ $offer->title }}</a></h4>
 
                                 </div>
                             </div>
@@ -134,7 +131,7 @@
                                             @foreach($pool3 as $offer)
                                                 <div class="weekly3-single">
                                                     <div class="weekly3-img">
-                                                        <img src="{{ $offer->urlToImage }}" alt="image">
+                                                        <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
                                                     </div>
                                                     <div class="weekly3-caption">
                                                         <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
@@ -179,7 +176,7 @@
                                             <!-- Single -->
                                             <div class="weekly2-single">
                                                 <div class="weekly2-img">
-                                                    <img src="{{ $offer->urlToImage }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
                                                 </div>
                                                 <div class="weekly2-caption">
                                                     <h4><a href="#">{{ $offer->title }}</a></h4>

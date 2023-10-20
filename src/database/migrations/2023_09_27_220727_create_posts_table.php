@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('url')->nullable();
-            $table->string('urlToImage');
+            $table->string('urlToImage')->nullable();
             $table->string('language')->nullable();
             $table->string('country')->nullable();
             $table->text('content')->nullable();

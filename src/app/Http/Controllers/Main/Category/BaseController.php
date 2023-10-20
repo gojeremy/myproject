@@ -27,7 +27,6 @@ class BaseController extends Controller
 
         $mobile_offer = $offers->splice(0, 1);
         $desctop_offers = $offers->splice(0, 6);
-
         $footerPosts = Post::all();
         $footer = $footerPosts->take(3);
 

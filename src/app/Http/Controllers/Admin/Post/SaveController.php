@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Jobs\SavePostJob;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,8 +15,7 @@ class SaveController extends BaseController
         // Получаем все данные из запроса
         $requestData = $request->all();
 
-        // Логируем все данные запроса
-        Log::info('Все данные запроса: ' . json_encode($requestData));
+
 
         // Проверяем наличие данных в запросе
         if (!empty($requestData)) {
@@ -30,11 +30,12 @@ class SaveController extends BaseController
                 'source_id' => $requestData['source']['id'] ?? null,
                 'source_name' => $requestData['source']['name'] ?? null,
             ];
-
+            // Логируем все данные запроса
+            Log::info('Все данные запроса: ' . json_encode($data));
             // Вызываем метод сервиса для сохранения данных
             try {
                 // Отправка данных в ваш сервис
-                $this->service->save($data);
+                SavePostJob::dispatch($data);
                 Log::info('Данные успешно сохранены');
                 return response()->json(['message' => 'Статья успешно сохранена'], 200);
             } catch (\Exception $e) {

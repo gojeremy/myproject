@@ -19,7 +19,7 @@ class IndexController extends Controller
         $posts = Cache::remember('postsMainIndex', now()->addMinutes(5), function () {
             return Post::where('published', 1)
                 ->orderBy('priority_id', 'desc')
-                ->select(['id', 'title', 'urlToImage', 'url', 'category'])
+                ->select(['id', 'title', 'urlToImage', 'url', 'category', 'author'])
                 ->get();
         });
 
@@ -38,7 +38,6 @@ class IndexController extends Controller
 
         $mobile_offer = $offers->splice(0, 1);
         $desctop_offers = $offers->splice(0, 6);
-     //   dd($mobile_offer);
 
         // Пул 1: 20 элементов
         $pool1 = $posts->splice(0, 18);
@@ -47,31 +46,24 @@ class IndexController extends Controller
         foreach ($tags as $tag) {
             $taggedPosts[$tag] = $pool1->splice(0, 6);
         }
-       // dd($pool1);
         // Пул 2: 2 элемента
         $pool2 = $posts->splice(0, 2);
-       // dd($pool2);
         // Пул 3: 6 элементов
         $pool3 = $posts->splice(0, 5);
-
         // Пул 4: 8 элементов с категорией 'general'
         $pool4 = $posts->filter(function ($post) {
             return $post->category == 'general';
         })->splice(0, 8);
         // Пул 5: 6 элементов
         $pool5 = $posts->splice(0, 6);
-
         // Пул 6: 8 элементов с категорией 'general'
         $pool6 = $posts->filter(function ($post) {
             return $post->category == 'business';
         })->splice(0, 8);
-
         // Пул 7: 6 элементов
         $pool7 = $posts->splice(0, 6);
-
         // Пул 8: 6 элементов
         $pool8 = $posts->splice(0, 6);
-
         // Пул 9: 8 элементов с категорией 'business'
         $pool9 = $posts->filter(function ($post) {
             return $post->category == 'entertainment';

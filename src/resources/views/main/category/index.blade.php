@@ -42,7 +42,7 @@
                                                         <div class="col-xl-4 col-lg-4 col-md-4">
                                                             <div class="whats-news-single mb-40 mb-40">
                                                                 <div class="whates-img">
-                                                                    <img src="{{ $post->urlToImage }}" alt="Image">
+                                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="Image">
                                                                 </div>
                                                                 <div class="whates-caption whates-caption2">
                                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>

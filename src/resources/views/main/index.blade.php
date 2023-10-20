@@ -44,11 +44,11 @@
                                                 <div class="col-xl-6 col-lg-12">
                                                     <div class="whats-news-single mb-40 mb-40">
                                                         <div class="whates-img">
-                                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                         </div>
                                                         <div class="whates-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
+                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                             <p>{{ Str::limit($post->description, $limit = 115, $end = '...') }}
                                                             </p>
                                                         </div>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                            <span>автор  {{ $post->author }}  -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
+                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                             <p>
                                             </p>
                                         </div>
@@ -101,7 +101,7 @@
                                 </div>-->
                                 <div class="most-recent-capt">
                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                 </div>
                             </div>
                                 @endforeach
@@ -137,11 +137,11 @@
                                                 @foreach($pool4 as $post)
                                                     <div class="weekly3-single">
                                                         <div class="weekly3-img">
-                                                            <img src="{{ $post->urlToImage }}" alt="image">
+                                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
                                                         </div>
                                                         <div class="weekly3-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -186,7 +186,7 @@
                                                 </div>
                                                 <div class="weekly2-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                 </div>
                                             </div>
                                             @endforeach
@@ -229,7 +229,7 @@
                                                         </div>
                                                         <div class="weekly3-caption">
                                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                            <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -269,7 +269,7 @@
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                            <span>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</span>
+                                            <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                             <p>{{ $post->description }}
                                             </p>
                                         </div>
@@ -317,7 +317,7 @@
                                                     </div>
                                                     <div class="weekly2-caption">
                                                         <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                        <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                                        <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -360,7 +360,7 @@
                                                 </div>
                                                 <div class="weekly3-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
-                                                    <p>автор {{ $post->author }}   -   {{ \Carbon\Carbon::today()->format('j F Y') }}</p>
+                                                    <span> {{ $post->author }}   {{ \Carbon\Carbon::today()->format('d.m.Y') }}</span>
                                                 </div>
                                             </div>
                                             @endforeach
