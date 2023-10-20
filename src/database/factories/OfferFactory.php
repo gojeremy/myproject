@@ -20,7 +20,7 @@ class OfferFactory extends Factory
             'title' => $this->faker->sentence,
             'published' => 1,
             'urlToImage' => '/images/4e20b65a96e7402689ed14c761d673d0.jpg',
-            'urlToImage' => 'https://google.com/',
+            'url' => 'https://google.com/',
             // Другие поля
         ];
     }
