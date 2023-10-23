@@ -169,7 +169,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('admin.source.save') }}',
+                    url: 'https://bidnews.org/admin/source/save',
                     data: dataToSave,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

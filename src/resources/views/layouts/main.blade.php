@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="{{ url('https://cdn.jsdelivr.net/npm/lozad@1.14.0/dist/lozad.min.js') }}"></script>
+
     <!-- Matomo -->
     <!-- Здесь вставьте код Matomo -->
     <script type="text/javascript">
@@ -141,6 +143,14 @@
 
     // Проверяем размер окна при изменении его размера
     window.addEventListener('resize', checkWindowSize);
+</script>
+<script>
+    const observer = lozad('.lozad', {
+        loaded: function(el) {
+            el.classList.add('lozad-fade');
+        }
+    });
+    observer.observe();
 </script>
 
 <!-- JS here -->

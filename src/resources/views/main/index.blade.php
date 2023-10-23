@@ -78,7 +78,7 @@
                             @foreach($pool2 as $post)
                                     <div class="whats-news-single mb-40">
                                         <div class="whates-img">
-                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>

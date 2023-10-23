@@ -22,7 +22,7 @@
                                 @foreach($pool4 as $post)
                                     <div class="weekly3-single">
                                         <div class="weekly3-img">
-                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                         </div>
                                         <div class="weekly3-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
@@ -66,7 +66,7 @@
                                             <!-- Single -->
                                             <div class="weekly2-single">
                                                 <div class="weekly2-img">
-                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                                 </div>
                                                 <div class="weekly2-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
@@ -109,7 +109,7 @@
                                         @foreach($pool6 as $post)
                                             <div class="weekly3-single">
                                                 <div class="weekly3-img">
-                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                                 </div>
                                                 <div class="weekly3-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
@@ -149,7 +149,7 @@
                                 <div class="col-sm-6">
                                     <div class="whats-news-single mb-40 mb-40">
                                         <div class="whates-img">
-                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                            <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                         </div>
                                         <div class="whates-caption">
                                             <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
@@ -197,7 +197,7 @@
                                             <!-- Single -->
                                             <div class="weekly2-single">
                                                 <div class="weekly2-img">
-                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                                 </div>
                                                 <div class="weekly2-caption">
                                                     <h4><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h4>
@@ -240,7 +240,7 @@
                                         @foreach($pool7 as $post)
                                             <div class="weekly3-single">
                                                 <div class="weekly3-img">
-                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image">
+                                                    <img src="{{ asset('storage/' . $post->urlToImage) }}" alt="image" class="lozad">
                                                 </div>
                                                 <div class="weekly3-caption">
                                                     <h6><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></h6>
