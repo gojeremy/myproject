@@ -2,7 +2,7 @@
     <!-- Header Start -->
     <div class="header-area">
         <div class="main-header ">
-            <div class="header-top black-bg d-none d-sm-block">
+            <!--<div class="header-top black-bg d-none d-sm-block">
                 <div class="container">
                     <div class="col-xl-12">
                         <div class="row d-flex justify-content-between align-items-center">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="header-mid gray-bg">
                 <div class="container">
                     <div class="row d-flex align-items-center">
@@ -32,8 +32,8 @@
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
                             <div class="header-banner f-right ">
-                                <img src="{{ asset('assets/img/gallery/header_card.png') }}" alt="">
-                            </div>
+                                <!--<img src="{{ asset('assets/img/gallery/header_card.png') }}" alt="">
+                            </div>-->
                         </div>
                     </div>
                 </div>

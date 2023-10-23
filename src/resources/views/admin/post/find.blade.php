@@ -230,13 +230,13 @@
                         // Очищаем tbody таблицы
                         $('#resultTable tbody').empty();
 
-                        // Проверяем, есть ли элементы в массиве posts
+                        // Проверяем, есть ли элементы в массиве index.blade.php
                         if (Array.isArray(response.articles) && response.articles.length > 0) {
                             // Если есть элементы, устанавливаем стиль кнопки на btn-success (зеленый)
                             button.addClass('completed-action btn-success');
                             button.text('Поиск выполнен');
                         } else {
-                            // Если массив posts пустой, устанавливаем стиль кнопки на btn-danger (красный)
+                            // Если массив index.blade.php пустой, устанавливаем стиль кнопки на btn-danger (красный)
                             button.addClass('btn-block btn-warning');
                             button.text('Пустой ответ');
                         }
@@ -288,13 +288,13 @@
                         // Очищаем tbody таблицы
                         $('#resultTable tbody').empty();
 
-                        // Проверяем, есть ли элементы в массиве posts
+                        // Проверяем, есть ли элементы в массиве index.blade.php
                         if (Array.isArray(response.articles) && response.articles.length > 0) {
                             // Если есть элементы, устанавливаем стиль кнопки на btn-success (зеленый)
                             button.addClass('completed-action btn-success');
                             button.text('Поиск выполнен');
                         } else {
-                            // Если массив posts пустой, устанавливаем стиль кнопки на btn-danger (красный)
+                            // Если массив index.blade.php пустой, устанавливаем стиль кнопки на btn-danger (красный)
                             button.addClass('btn-block btn-warning');
                             button.text('Пустой ответ');
                         }
@@ -348,13 +348,13 @@
                         // Очищаем tbody таблицы
                         $('#resultTable tbody').empty();
 
-                        // Проверяем, есть ли элементы в массиве posts
+                        // Проверяем, есть ли элементы в массиве index.blade.php
                         if (Array.isArray(response.articles) && response.articles.length > 0) {
                             // Если есть элементы, устанавливаем стиль кнопки на btn-success (зеленый)
                             button.addClass('completed-action btn-success');
                             button.text('Поиск выполнен');
                         } else {
-                            // Если массив posts пустой, устанавливаем стиль кнопки на btn-danger (красный)
+                            // Если массив index.blade.php пустой, устанавливаем стиль кнопки на btn-danger (красный)
                             button.addClass('btn-block btn-warning');
                             button.text('Пустой ответ');
                         }

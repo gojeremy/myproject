@@ -20,17 +20,38 @@ class BaseController extends Controller
     public function __invoke(): View
     {
         $posts = $this->getCategoryPosts();
-        $offers = $this->getCategoryOffers();
 
-        $tags = ['hot', 'popular', 'recommended'];
-        $taggedPosts = $this->getTaggedPosts($tags, $posts);
+        list($mobile_offer, $desktop_offers) = $this->getModalContent();
 
+        $tags = $this->getTags();
+        $taggedPosts = $this->getTaggedPosts($posts);
+
+        $footer = $this->getPool($posts, 3);
+
+        return view("main.category.index", compact('taggedPosts', 'posts', 'tags', 'mobile_offer', 'desktop_offers', 'footer'));
+    }
+    protected function getTags(): array
+    {
+        return ['hot', 'popular', 'recommended'];
+    }
+
+    protected function getTaggedPosts($data)
+    {
+        $taggedPosts = [];
+        $tags = $this->getTags();
+        foreach($tags as $tag) {
+            $taggedPosts[$tag] = $data->splice(0, 12);
+        }
+        return $taggedPosts;
+    }
+
+    protected function getModalContent(): array
+    {
+        $offers = $this->getOffers();
         $mobile_offer = $offers->splice(0, 1);
-        $desctop_offers = $offers->splice(0, 6);
-        $footerPosts = Post::all();
-        $footer = $footerPosts->take(3);
+        $desktop_offers = $offers->splice(0, 6);
 
-        return view("main.category.index", compact('taggedPosts', 'tags', 'posts', 'mobile_offer', 'desctop_offers', 'footer'));
+        return [$mobile_offer, $desktop_offers];
     }
 
     protected function getCategoryPosts()
@@ -40,29 +61,33 @@ class BaseController extends Controller
                 ->where('category', $this->category)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
-                ->paginate(27);
+                ->paginate(39);
         });
     }
 
-    protected function getCategoryOffers()
+    protected function getPostsByCategory($posts, $category, $count)
     {
-        return Cache::remember("offersMainCategory{$this->category}Index", now()->addMinutes(5), function () {
+        return $posts->filter(function ($post) use ($category) {
+            return $post->category == $category;
+        })->splice(0, $count);
+    }
+
+    protected function getOffers()
+    {
+        $offers = Cache::remember('offersMainIndex', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->whereNotNull('urlToImage')
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->get();
         });
+
+        //Cache::forget('offersMainIndex');
+        return $offers;
     }
 
-    protected function getTaggedPosts(array $tags, $posts)
+    protected function getPool($data, $amount)
     {
-        $taggedPosts = [];
-
-        foreach ($tags as $tag) {
-            $taggedPosts[$tag] = $posts->splice(0, 9);
-        }
-
-        return $taggedPosts;
+        return $data->splice(0, $amount);
     }
 }

@@ -14,23 +14,38 @@ class IndexController extends Controller
      */
     public function __invoke(): View
     {
-        // Попробовать получить результат из кэша, если он там есть.
+        $offers = $this->getOffers();
+
+        list($mobile_offer, $desktop_offers) = $this->getModalContent();
+
+        $footer_offers = $this->getPool($offers, 3);
+
+        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desktop_offers', 'footer_offers'));
+    }
+    protected function getOffers()
+    {
         $offers = Cache::remember('offersTeaserFeed', now()->addMinutes(5), function () {
             return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
-                ->paginate(16);
+                ->paginate(19);
         });
 
-        // Данные были закэшированы, и теперь, если вы хотите сбросить кэш, добавьте следующую строку:
-         Cache::forget('offersTeaserFeed');
+        //Cache::forget('offersMainIndex');
+        return $offers;
+    }
 
+    protected function getModalContent()
+    {
+        $offers = $this->getOffers();
         $mobile_offer = $offers->splice(0, 1);
+        $desktop_offers = $offers->splice(0, 6);
 
-        $desctop_offers = $offers->splice(0, 6);
-        // footer: 3 элемента
-        $footer_offers = $offers->take(3);
+        return [$mobile_offer, $desktop_offers];
+    }
 
-        return view('main.teaserfeed.index', compact('offers', 'mobile_offer', 'desctop_offers', 'footer_offers'));
+    protected function getPool($data, $amount)
+    {
+        return $data->splice(0, $amount);
     }
 }

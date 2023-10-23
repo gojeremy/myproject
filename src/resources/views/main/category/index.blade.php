@@ -80,5 +80,6 @@
             </div>
         </div>
         <!-- End pagination  -->
+        @include('main.include.posts.index')
     </main>
 @endsection

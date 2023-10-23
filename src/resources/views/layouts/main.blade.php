@@ -22,12 +22,33 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-</head>
+    <!-- Matomo -->
+    <!-- Здесь вставьте код Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq || [];
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function() {
+            var u = "https://gojeremyyoutub0.matomo.cloud/";
+            _paq.push(["setTrackerUrl", u + "matomo.php"]);
+            _paq.push(["setSiteId", "1"]);
+            var d = document,
+                g = d.createElement("script"),
+                s = d.getElementsByTagName("script")[0];
+            g.type = "text/javascript";
+            g.async = true;
+            g.defer = true;
+            g.src = u + "matomo.js";
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
 
+    <!-- End Matomo Code -->
+
+</head>
 <body>
 
 @include('include.preloader')
-
 @include('include.sidebar')
 @yield('content')
 @include('include.footer')
@@ -67,8 +88,8 @@
                 <div id="desktop-content" style="display: none;">
                     <!-- Контент для десктопов -->
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                        @if(isset($desctop_offers))
-                            @foreach($desctop_offers as $offer)
+                        @if(isset($desktop_offers))
+                            @foreach($desktop_offers as $offer)
                         <div class="col">
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">

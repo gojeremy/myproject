@@ -9,7 +9,7 @@
                         @if(isset($footer))
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Popular post</h4>
+                                <h4>Популярные новости</h4>
                             </div>
                             @foreach($footer as $post)
                             <!-- Popular post -->
@@ -28,7 +28,7 @@
                             @if(isset($footer_offers))
                                 <div class="single-footer-caption mb-50">
                                     <div class="footer-tittle">
-                                        <h4>Popular post</h4>
+                                        <h4>Популярные новости</h4>
                                     </div>
                                     @foreach($footer_offers as $post)
                                         <!-- Popular post -->
@@ -54,9 +54,9 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
+                                        <p class="info1">Российское новостное интернет-издание, зарегистрированое в Министерстве Российской Федерации по делам печати, телерадиовещания и средств массовых коммуникаций (свидетельство о регистрации средства массовой информации ЭЛ № 77-4410 от 23 марта 2002 года) в качестве электронного периодического издания.</p>
+                                        <p class="info2">Веб-сайт, ставящий своей задачей выполнять функцию средства массовой информации (СМИ) в сети Интернет. Как и печатные издания, интернет-издания руководствуются принципами журналистики.</p>
+                                        <p class="info2">Котировки мировых финансовых инструментов предоставлены World News Co</p>
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +73,8 @@
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright © 2023 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  Copyright © 2023 All rights reserved
+  </p>
                             </div>
                         </div>
                     </div>

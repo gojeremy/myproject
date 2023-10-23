@@ -71,7 +71,7 @@
                         <div class="most-recent-area">
                             <!-- Section Tittle -->
                             <div class="small-tittle mb-20">
-                                <h4>Most Recent</h4>
+                                <h4>Рекомендации</h4>
                             </div>
                             <!-- Details -->
                             @if(isset($pool))
@@ -92,61 +92,6 @@
                 </div>
             </div>
         </div>
-        @if(isset($offers))
-            <section class="whats-news-area pt-50 pb-20 gray-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="whats-news-wrapper">
-                                <!-- Heading & Nav Button -->
-                                <div class="row justify-content-between align-items-end mb-15 mx-2">
-                                    <div class="section-tittle">
-                                        <h3>Инсайд</h3>
-                                    </div>
-                                    <div class="section-tittle">
-                                        <a href="{{ route('main.teaserfeed.index') }}" target="_blank"><p>см. все</p></a>
-                                    </div>
-                                </div>
-                                <!-- Tab content -->
-                                <div class="row">
-                                    @foreach($offers as $offer)
-                                        <div class="col-sm-6">
-                                            <div class="whats-news-single mb-40 mb-40">
-                                                <div class="whates-img">
-                                                    <img src="{{ asset('storage/' . $offer->urlToImage) }}" alt="image">
-                                                </div>
-                                                <div class="whates-caption">
-                                                    <h4><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h4>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                                <!-- End Nav Card -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </section>
-
-        <!--Start pagination -->
-        <div class="pagination-area  gray-bg pb-45">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap">
-                            {{ $offers->links() }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End pagination  -->
-        @endif
+        @include('main.include.offers.index')
     </main>
 @endsection
