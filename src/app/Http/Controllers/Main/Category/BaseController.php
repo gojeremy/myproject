@@ -56,13 +56,11 @@ class BaseController extends Controller
 
     protected function getCategoryPosts()
     {
-        return Cache::remember("postsMainCategory{$this->category}Index", now()->addMinutes(5), function () {
             return Post::where('published', 1)
                 ->where('category', $this->category)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'author', 'description', 'category'])
                 ->paginate(39);
-        });
     }
 
     protected function getPostsByCategory($posts, $category, $count)
