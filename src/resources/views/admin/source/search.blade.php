@@ -111,7 +111,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://bidnews.org/admin/source/search',
+                    url: 'https://bidnews.org/admin/source/search',
                     data: form.serialize(),
                     success: handleSearchSuccess,
                     error: handleSearchError
