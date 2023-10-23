@@ -111,7 +111,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('admin.source.search') }}',
+                    url: 'http://bidnews.org/admin/source/search',
                     data: form.serialize(),
                     success: handleSearchSuccess,
                     error: handleSearchError
