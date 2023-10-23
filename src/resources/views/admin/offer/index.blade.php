@@ -23,6 +23,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-9">
+                        @if(isset($offers))
                         <div class="card">
                             <div class="card-header border-0">
                                 <h3 class="card-title">Products</h3>
@@ -43,7 +44,6 @@
                                         <th>category</th>
                                     </tr>
                                     </thead>
-                                    @if(isset($offers))
                                     <tbody>
                                     @foreach($offers as $offer)
                                     <tr>
@@ -74,13 +74,14 @@
                                     </tr>
                                     @endforeach
                                     </tbody>
-                                        {{ $offers->links() }}
-                                        @endif
                                 </table>
+                            </div>
+                            <div class="card-footer">
+                                {{ $offers->links() }}
 
                             </div>
                         </div>
-
+                        @endif
                     </div>
                     <div class="col-lg-3">
                         <div class="card">

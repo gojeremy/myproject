@@ -32,12 +32,6 @@
                 <p>Dashboard [soon]</p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.report.index') }}" class="nav-link {{ request()->is('admin/report*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Report [soon]</p>
-            </a>
-        </li>
         <li class="nav-header">POST MANAGER</li>
         <li class="nav-item">
             <a href="{{ route('admin.post.index') }}" class="nav-link {{ request()->is('admin/post*') ? 'active' : '' }}">
