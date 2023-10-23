@@ -97,7 +97,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
         Route::delete('/{user}', [\App\Http\Controllers\Admin\User\DeleteController::class,'__invoke'])->name('admin.user.delete');
     });
 });
-require __DIR__.'/auth.php';
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
 
