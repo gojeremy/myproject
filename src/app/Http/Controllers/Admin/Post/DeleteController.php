@@ -14,6 +14,7 @@ class DeleteController extends BaseController
     public function __invoke(Post $post): RedirectResponse
     {
         $post->delete();
+        \Log::info('post | delete | success : ' . $post->id);
         return redirect()->route('admin.post.index');
     }
 }
