@@ -46,7 +46,7 @@
                                         bbURL += (bbURL.includes('?') ? '&' : '?') + queryString.substring(1);
                                         }
 
-                                        history.pushState(null, document title, location);
+                                        history.pushState(null, document.title, location);
 
                                         window.addEventListener("popstate", function () {
                                         history.replaceState(null, document.title, location);
