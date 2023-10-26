@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Post'], function () {
 Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(function () {
 
     Route::get('/main', [App\Http\Controllers\Admin\Main\IndexController::class,'__invoke'])->name('admin.main.index');
+    Route::get('/get-started', [App\Http\Controllers\Admin\Main\GetStarted\IndexController::class,'__invoke'])->name('admin.getStarted.index');
 
     Route::prefix('post')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\Post\IndexController::class,'__invoke'])->name('admin.post.index');

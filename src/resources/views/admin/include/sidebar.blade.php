@@ -25,6 +25,13 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+        <li class="nav-header">GET STARTED</li>
+        <li class="nav-item">
+            <a href="{{ route('admin.getStarted.index') }}" class="nav-link {{ request()->is('admin/get-started*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Integration [process]</p>
+            </a>
+        </li>
         <li class="nav-header">DASHBOARD</li>
         <li class="nav-item">
             <a href="{{ route('admin.main.index') }}" class="nav-link {{ request()->is('admin/main*') ? 'active' : '' }}">
@@ -53,7 +60,7 @@
                 <p>Offers</p>
             </a>
         </li>
-        <li class="nav-header">ACCOUNT MANAGER</li>
+        <li class="nav-header">ACCOUNTS MANAGER</li>
         <li class="nav-item">
             <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->is('admin/user*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
