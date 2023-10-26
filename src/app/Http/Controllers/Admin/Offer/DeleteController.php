@@ -10,6 +10,7 @@ class DeleteController extends BaseController
     public function __invoke(Offer $offer): RedirectResponse
     {
         $offer->delete();
+        \Log::info('offer | delete | success : ' . $offer->id);
         return redirect()->route('admin.offer.index');
     }
 }

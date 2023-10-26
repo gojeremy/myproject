@@ -247,7 +247,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'https://bidnews.org/admin/post/save',
+                    url: '{{ route('admin.post.save') }}',
                     data: articleData,
                     success: function (response) {
                         handleSaveSuccess(response, button);

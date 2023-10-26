@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $offers = $this->getOffers();
 
-        list($mobile_offer, $desktop_offers) = $this->getModalContent();
+        list($mobile_offer, $desktop_offers) = $this->getModalContent($offers);
 
         $footer_offers = $this->getPool($offers, 3);
 
@@ -24,20 +24,14 @@ class IndexController extends Controller
     }
     protected function getOffers()
     {
-        $offers = Cache::remember('offersTeaserFeed', now()->addMinutes(5), function () {
-            return Offer::where('published', 1)
+        return Offer::where('published', 1)
                 ->orderBy('priority_id', 'desc')
                 ->select(['id', 'title', 'urlToImage', 'url'])
                 ->paginate(19);
-        });
-
-        //Cache::forget('offersMainIndex');
-        return $offers;
     }
 
-    protected function getModalContent()
+    protected function getModalContent($offers)
     {
-        $offers = $this->getOffers();
         $mobile_offer = $offers->splice(0, 1);
         $desktop_offers = $offers->splice(0, 6);
 

@@ -14,6 +14,7 @@ class DeleteController extends BaseController
     public function __invoke(Source $source): RedirectResponse
     {
         $source->delete();
+        \Log::info('source | delete | success : ' . $source['name']);
         return redirect()->route('admin.source.index');
     }
 }

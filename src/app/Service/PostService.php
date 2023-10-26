@@ -17,12 +17,13 @@ class PostService
             if(!empty($data['urlToImage'])){
                 $data['urlToImage'] = Storage::disk('public')->put('/images', $data['urlToImage']);
             }
-            Log::info('Все данные запроса: ' . json_encode($data));
             $post = Post::firstOrCreate($data);
             DB::commit();
+            \Log::info('article | create | success : ' . $post->id);
             return $post;
         } catch (\Exception $exception){
             DB::rollBack();
+            \Log::error('article | create | error : ' . $exception->getMessage());
             abort(500);
         }
     }
@@ -34,9 +35,11 @@ class PostService
             }
             $post->update($data);
             DB::commit();
+            \Log::info('offer | update | success : ' . $post->id);
             return $post;
         }catch (\Exception $exception){
             DB::rollBack();
+            \Log::error('article | update | error : ' . $exception->getMessage());
             abort(500);
         }
 
@@ -63,11 +66,18 @@ class PostService
 
     public function save($data)
     {
-        DB::beginTransaction();
-        if (!empty($data['urlToImage'])) {
+        try{
+            DB::beginTransaction();
+            if (!empty($data['urlToImage'])) {
             $data['urlToImage'] = $this->downloadAndSaveImage($data['urlToImage']);
+            }
+            $post = Post::firstOrCreate($data);
+            DB::commit();
+            \Log::info('post | update | success : ' . $post->id);
+        }catch (\Exception $exception){
+            DB::rollBack();
+            \Log::error('article | save | error : ' . $exception->getMessage());
+            abort(500);
         }
-        Post::firstOrCreate($data);
-        DB::commit();
     }
 }

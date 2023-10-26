@@ -34,7 +34,7 @@ class FindController extends BaseController
         $sources = $newsApi->getSources($category, $language, $country);
 
         // Логируем успешный запрос
-            \Log::info("Запрос источников новостей: Категория - $category, Страна - $country, Язык - $language");
+            \Log::info("source | request | success : Категория - $category, Страна - $country, Язык - $language");
 
             return response()->json($sources);
         }catch (NewsApiException $e) {

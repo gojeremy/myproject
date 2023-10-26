@@ -32,14 +32,13 @@ class SearchController extends Controller
             $newsApi = new NewsApi($newsApiKey);
 
             $posts = $newsApi->getTopHeadlines( $q,null, $country, $category, $page_size, $page);
-
             // Логируем успешный запрос
-            \Log::info("Запрос новостей по категории - $category, страна - $country, ключи - $q");
+            \Log::info("article | search | success | category - $category, страна - $country, ключи - $q");
 
             return response()->json($posts);
         }catch (NewsApiException $e) {
             // Обрабатываем исключение NewsApiException и возвращаем ошибку
-            \Log::error("Ошибка при запросе источников новостей: " . $e->getMessage());
+            \Log::error("article | search | error | " . $e->getMessage());
             return response()->json(['error' => 'Ошибка при запросе источников новостей'], 500);
         }
     }

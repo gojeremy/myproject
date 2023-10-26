@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Source;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SaveController extends BaseController
 {
@@ -28,12 +29,12 @@ class SaveController extends BaseController
             $this->service->store($validatedData);
 
             // Логирование успешного запроса
-            \Log::info("Запрос создания источников новостей: успех");
+            Log::info('source | save | success : ' . $validatedData['name']);
 
             return response()->json($validatedData);
         } catch (\Exception $e) {
             // Обработка ошибки и возврат ошибки в случае неудачи
-            \Log::error("Ошибка при запросе создания источника новостей: " . $e->getMessage());
+            Log::error('source | save | error : ' . $e->getMessage());
             return response()->json(['error' => 'Ошибка при запросе создания источника новостей'], 500);
         }
         }

@@ -12,7 +12,9 @@ class IndexController extends BaseController
      */
     public function __invoke(): View
     {
-        $posts = Post::where('published', 1)->paginate(15);
+        $posts = Post::where('published', 1)
+            ->orderBy('id', 'desc')
+            ->paginate(15);
         return view('admin.post.index', compact('posts'));
     }
 }

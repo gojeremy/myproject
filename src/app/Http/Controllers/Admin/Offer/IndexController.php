@@ -12,7 +12,10 @@ class IndexController extends BaseController
      */
     public function __invoke(): View
     {
-        $offers = Offer::where('published', 1)->paginate(15);
+        $offers = Offer::where('published', 1)
+            ->orderBy('id', 'desc') // 'created_at' - це приклад стовпця дати створення, замініть його на відповідний стовпець у вашій моделі
+            ->paginate(15);
+
         return view('admin.offer.index', compact('offers'));
     }
 }

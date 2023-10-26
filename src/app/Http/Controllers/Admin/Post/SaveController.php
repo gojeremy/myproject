@@ -31,19 +31,16 @@ class SaveController extends BaseController
                 'source_name' => $requestData['source']['name'] ?? null,
             ];
             // Логируем все данные запроса
-            Log::info('Все данные запроса: ' . json_encode($data));
+            Log::info('article | save | success [data]: ' . json_encode($data));
             // Вызываем метод сервиса для сохранения данных
             try {
                 // Отправка данных в ваш сервис
                 SavePostJob::dispatch($data);
-                Log::info('Данные успешно сохранены');
                 return response()->json(['message' => 'Статья успешно сохранена'], 200);
             } catch (\Exception $e) {
-                Log::error('Ошибка при сохранении статьи: ' . $e->getMessage());
                 return response()->json(['error' => 'Ошибка при сохранении статьи'], 500);
             }
         } else {
-            Log::error('Нет данных в запросе');
             return response()->json(['error' => 'Нет данных в запросе'], 400);
         }
     }

@@ -29,6 +29,13 @@ class SavePostJob implements ShouldQueue
      */
     public function handle(PostService $postService)
     {
+        try {
             $postService->save($this->data);
+            // Додайте логування для успішного виконання роботи
+            Log::info('article | save | success [JOB]:', ['data' => $this->data]);
+        } catch (\Exception $e) {
+            // Додайте логування для помилок
+            Log::error('article | save | error [JOB]: ' . $e->getMessage(), ['data' => $this->data]);
+        }
     }
 }

@@ -111,7 +111,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'https://bidnews.org/admin/source/search',
+                    url: '{{route('admin.source.search')}}',
                     data: form.serialize(),
                     success: handleSearchSuccess,
                     error: handleSearchError
@@ -169,7 +169,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'https://bidnews.org/admin/source/save',
+                    url: '{{ route('admin.source.save') }}',
                     data: dataToSave,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
