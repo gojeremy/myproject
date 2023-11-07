@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -15,29 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-        Post::factory(50)->create([
-                'category' => 'general',
+         Category::factory()->create(['name' => 'Бизнес', 'priority_num' => 0, 'published' => 1, 'idName' => 'business']);
+         Category::factory()->create(['name' => 'Общее', 'priority_num' => 1, 'published' => 1, 'idName' => 'general']);
 
+        Post::factory(35)->create([
+                'category' => 'general',
             ]
         );
-        Post::factory(50)->create([
-                'category' => 'entertainment',
-            ]
-        );
-        Post::factory(50)->create([
+        Post::factory(35)->create([
                 'category' => 'business',
             ]
         );
-        Post::factory(50)->create([
-                'category' => 'general',
-            ]
-        );
-        Offer::factory(100)->create();
+
+        Offer::factory(50)->create();
+
          User::factory()->create([
-             'name' => 'Test User',
-             'email' => 'test@test',
-             'password' => '12345678',
+             'name' => 'Admin User',
+             'email' => 'test_user@admin-panel.org',
+             'password' => 'Boria001',
          ]);
     }
 }

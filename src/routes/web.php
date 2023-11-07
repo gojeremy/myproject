@@ -15,30 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 // main
 Route::group(['namespace' => 'Main'], function () {
-        Route::get('/', [App\Http\Controllers\Main\IndexController::class,'__invoke'])->name('main.index');
+    Route::get('/', [App\Http\Controllers\Main\IndexController::class,'__invoke'])->name('main.index');
+    Route::get('/category/{category}', [App\Http\Controllers\Main\Category\IndexController::class,'__invoke'])->name('main.category.index');
+    Route::get('/teasers-feed', [App\Http\Controllers\Main\TeaserFeed\IndexController::class,'__invoke'])->name('main.teaserfeed.index');
 
-        Route::get('/business', [\App\Http\Controllers\Main\Category\Business\IndexController::class,'__invoke'])->name('main.category.business.index');
-        Route::get('/entertainment', [App\Http\Controllers\Main\Category\Entertainment\IndexController::class,'__invoke'])->name('main.category.entertainment.index');
-        Route::get('/general', [App\Http\Controllers\Main\Category\General\IndexController::class,'__invoke'])->name('main.category.general.index');
-        Route::get('/health', [App\Http\Controllers\Main\Category\Health\IndexController::class,'__invoke'])->name('main.category.health.index');
-        Route::get('/science', [App\Http\Controllers\Main\Category\Science\IndexController::class,'__invoke'])->name('main.category.science.index');
-        Route::get('/sports', [App\Http\Controllers\Main\Category\Sports\IndexController::class,'__invoke'])->name('main.category.sports.index');
-        Route::get('/technology', [App\Http\Controllers\Main\Category\Technology\IndexController::class,'__invoke'])->name('main.category.technology.index');
-        Route::get('/blog', [App\Http\Controllers\Main\Blog\IndexController::class,'__invoke'])->name('main.blog.index');
-        Route::get('/teasers-feed', [App\Http\Controllers\Main\TeaserFeed\IndexController::class,'__invoke'])->name('main.teaserfeed.index');
-    });
+    Route::get('/blog', [App\Http\Controllers\Main\Blog\IndexController::class,'__invoke'])->name('main.blog.index');
+});
 
 Route::group(['namespace' => 'Post'], function () {
-        Route::prefix('post')->group(function () {
-            Route::get('/{post}', [App\Http\Controllers\Post\ShowController::class,'__invoke'])->name('post.show');
-        });
+    Route::prefix('post')->group(function () {
+        Route::get('/{post}', [App\Http\Controllers\Post\ShowController::class,'__invoke'])->name('post.show');
+    });
 });
 
 // admin
 Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(function () {
 
     Route::get('/main', [App\Http\Controllers\Admin\Main\IndexController::class,'__invoke'])->name('admin.main.index');
-    Route::get('/get-started', [App\Http\Controllers\Admin\Main\GetStarted\IndexController::class,'__invoke'])->name('admin.getStarted.index');
+    Route::get('/report', [App\Http\Controllers\Admin\Report\IndexController::class,'__invoke'])->name('admin.report.index');
+    Route::get('/get-started', [\App\Http\Controllers\Admin\GetStarted\IndexController::class,'__invoke'])->name('admin.getStarted.index');
 
     Route::prefix('post')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\Post\IndexController::class,'__invoke'])->name('admin.post.index');
@@ -54,7 +49,6 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
             # form #3 Everything
             Route::get('/everything', [\App\Http\Controllers\Admin\Post\Search\Everything\IndexController::class,'__invoke'])->name('admin.post.search.everything.index');
             Route::post('/everything', [\App\Http\Controllers\Admin\Post\Search\Everything\SearchController::class,'__invoke'])->name('admin.post.search.everything.find');
-
         });
 
         # store
@@ -68,6 +62,17 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
         Route::delete('/{post}', [\App\Http\Controllers\Admin\Post\DeleteController::class,'__invoke'])->name('admin.post.delete');
     });
 
+    Route::prefix('category')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\Category\IndexController::class, '__invoke'])->name('admin.category.index');
+        Route::get('/unpublished', [\App\Http\Controllers\Admin\Category\UnpublishedController::class,'__invoke'])->name('admin.category.unpublished');
+        Route::get('/create', [\App\Http\Controllers\Admin\Category\CreateController::class,'__invoke'])->name('admin.category.create');
+        Route::post('/', [\App\Http\Controllers\Admin\Category\StoreController::class,'__invoke'])->name('admin.category.store');
+        Route::get('/{category}/show', [\App\Http\Controllers\Admin\Category\ShowController::class,'__invoke'])->name('admin.category.show');
+        Route::get('/{category}/edit', [\App\Http\Controllers\Admin\Category\EditController::class,'__invoke'])->name('admin.category.edit');
+        Route::patch('/{category}/edit', [\App\Http\Controllers\Admin\Category\UpdateController::class,'__invoke'])->name('admin.category.update');
+        Route::delete('/{category}', [\App\Http\Controllers\Admin\Category\DeleteController::class,'__invoke'])->name('admin.category.delete');
+    });
+
     Route::prefix('source')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\Source\IndexController::class,'__invoke'])->name('admin.source.index');
         Route::delete('/{source}', [\App\Http\Controllers\Admin\Source\DeleteController::class,'__invoke'])->name('admin.source.delete');
@@ -77,6 +82,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
         Route::post('/save', [\App\Http\Controllers\Admin\Source\SaveController::class,'__invoke'])->name('admin.source.save');
 
     });
+
     Route::prefix('offer')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\Offer\IndexController::class,'__invoke'])->name('admin.offer.index');
         Route::get('/unpublished', [\App\Http\Controllers\Admin\Offer\UnpublishedController::class,'__invoke'])->name('admin.offer.unpublished');
@@ -87,6 +93,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
         Route::patch('/{offer}/edit', [\App\Http\Controllers\Admin\Offer\UpdateController::class,'__invoke'])->name('admin.offer.update');
         Route::delete('/{offer}', [\App\Http\Controllers\Admin\Offer\DeleteController::class,'__invoke'])->name('admin.offer.delete');
     });
+
     Route::prefix('user')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\User\IndexController::class,'__invoke'])->name('admin.user.index');
         Route::get('/create', [\App\Http\Controllers\Admin\User\CreateController::class,'__invoke'])->name('admin.user.create');

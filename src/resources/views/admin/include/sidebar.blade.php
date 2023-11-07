@@ -25,32 +25,45 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-header">GET STARTED</li>
-        <li class="nav-item">
-            <a href="{{ route('admin.getStarted.index') }}" class="nav-link {{ request()->is('admin/get-started*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Integration [process]</p>
-            </a>
-        </li>
+
         <li class="nav-header">DASHBOARD</li>
         <li class="nav-item">
-            <a href="{{ route('admin.main.index') }}" class="nav-link {{ request()->is('admin/main*') ? 'active' : '' }}">
+            <a href="{{ route('admin.main.index') }}" class="nav-link {{ request()->is('admin/main') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
                 <p>Dashboard [soon]</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.report.index') }}" class="nav-link {{ request()->is('admin/report') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Report [soon]</p>
             </a>
         </li>
         <li class="nav-header">POST MANAGER</li>
         <li class="nav-item">
             <a href="{{ route('admin.post.index') }}" class="nav-link {{ request()->is('admin/post*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
-                <p>Posts</p>
+                <p>Посты</p>
+            </a>
+        </li>
+        <li class="nav-header">CATEGORY MANAGER</li>
+        <li class="nav-item">
+            <a href="{{ route('admin.category.index') }}" class="nav-link {{ request()->is('admin/category*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Категории</p>
             </a>
         </li>
         <li class="nav-header">SOURCE MANAGER</li>
         <li class="nav-item">
             <a href="{{ route('admin.source.index') }}" class="nav-link {{ request()->is('admin/source*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
-                <p>Source</p>
+                <p>Source #1</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.source.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Source #2</p>
             </a>
         </li>
         <li class="nav-header">OFFER MANAGER</li>
@@ -65,6 +78,13 @@
             <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->is('admin/user*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
                 <p>Users [process]</p>
+            </a>
+        </li>
+        <li class="nav-header">GET STARTED</li>
+        <li class="nav-item">
+            <a href="{{ route('admin.getStarted.index') }}" class="nav-link {{ request()->is('admin/get-started*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Integration [process]</p>
             </a>
         </li>
     </ul>

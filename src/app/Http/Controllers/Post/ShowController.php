@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Cache;
@@ -17,7 +18,7 @@ class ShowController extends Controller
     public function __invoke(Post $post): View
     {
         $offers = $this->getOffers();
-
+        $categories = $this->getMenuCategories();
         list($mobile_offer, $desktop_offers) = $this->getModalContent();
 
         $pool = $this->getPool($offers, 3);
@@ -29,13 +30,15 @@ class ShowController extends Controller
         $pool9 = $this->getPool($offers, 8);
 
         $footer_offers = $offers->splice(0, 3);
-        return view('post.show', compact('post', 'pool', 'desktop_offers', 'mobile_offer', 'footer_offers', 'pool4', 'pool5', 'pool6', 'pool7', 'pool8', 'pool9'));
+        return view('post.show', compact('post', 'pool', 'desktop_offers', 'mobile_offer', 'footer_offers', 'pool4', 'pool5', 'pool6', 'pool7', 'pool8', 'pool9', 'categories'));
     }
     protected function getModalContent()
     {
         $offers = $this->getOffers();
-        $mobile_offer = $offers->splice(0, 1);
-        $desktop_offers = $offers->splice(0, 6);
+     //   $mobile_offer = $offers->splice(0, 1);
+      //  $desktop_offers = $offers->splice(0, 6);
+        $mobile_offer = $offers->random(1);
+        $desktop_offers = $offers->random(6);
 
         return [$mobile_offer, $desktop_offers];
     }
@@ -58,5 +61,12 @@ class ShowController extends Controller
     {
         return $data->splice(0, $amount);
     }
-
+    protected function getMenuCategories() {
+        $categories = Cache::remember('categoriesPostIndex', now()->addMinutes(5), function () {
+        return Category::where('published', 1)
+            ->orderBy('priority_num','asc')
+            ->get();
+        });
+        return $categories;
+    }
 }

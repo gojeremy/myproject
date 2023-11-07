@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Main\Category;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Offer;
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
@@ -12,15 +14,11 @@ class BaseController extends Controller
 {
     protected string $category;
 
-    public function __construct($category)
+    public function __invoke(Request $request, $category)
     {
         $this->category = $category;
-    }
-
-    public function __invoke(): View
-    {
         $posts = $this->getCategoryPosts();
-
+        $categories = $this->getMenuCategories();
         list($mobile_offer, $desktop_offers) = $this->getModalContent();
 
         $tags = $this->getTags();
@@ -28,7 +26,15 @@ class BaseController extends Controller
 
         $footer = $this->getPool($posts, 3);
 
-        return view("main.category.index", compact('taggedPosts', 'posts', 'tags', 'mobile_offer', 'desktop_offers', 'footer'));
+        return view("main.category.index", compact('taggedPosts', 'posts', 'tags', 'mobile_offer', 'desktop_offers', 'footer', 'categories'));
+    }
+    protected function getMenuCategories() {
+        $categories = Cache::remember('categoriesCategoryIndex', now()->addMinutes(5), function () {
+            return Category::where('published', 1)
+                ->orderBy('priority_num','asc')
+                ->get();
+        });
+        return $categories;
     }
     protected function getTags(): array
     {
@@ -48,8 +54,10 @@ class BaseController extends Controller
     protected function getModalContent(): array
     {
         $offers = $this->getOffers();
-        $mobile_offer = $offers->splice(0, 1);
-        $desktop_offers = $offers->splice(0, 6);
+     //   $mobile_offer = $offers->splice(0, 1);
+     //   $desktop_offers = $offers->splice(0, 6);
+        $mobile_offer = $offers->random(1);
+        $desktop_offers = $offers->random(6);
 
         return [$mobile_offer, $desktop_offers];
     }
@@ -83,7 +91,6 @@ class BaseController extends Controller
         //Cache::forget('offersMainIndex');
         return $offers;
     }
-
     protected function getPool($data, $amount)
     {
         return $data->splice(0, $amount);

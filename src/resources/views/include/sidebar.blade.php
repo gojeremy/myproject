@@ -51,17 +51,11 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="{{ route('main.index') }}" target="_blank">Главная</a></li>
-                                        <li><a href="{{ route('main.category.general.index') }}" target="_blank">Общее</a></li>
-                                        <li><a href="{{ route('main.category.business.index') }}" target="_blank">Бизнесс</a></li>
-                                        <li><a href="#">Категории</a>
-                                            <ul class="submenu">
-                                                <li><a href="{{ route('main.category.entertainment.index') }}" target="_blank">Развлечения</a></li>
-                                                <li><a href="{{ route('main.category.technology.index') }}" target="_blank">Технологии</a></li>
-                                                <li><a href="{{ route('main.category.sports.index') }}" target="_blank">Спорт</a></li>
-                                                <li><a href="{{ route('main.category.science.index') }}" target="_blank">Наука</a></li>
-                                                <li><a href="{{ route('main.category.health.index') }}" target="_blank">Здоровье</a></li>
-                                            </ul>
-                                        </li>
+                                        @if(isset($categories))
+                                        @foreach($categories as $category)
+                                            <li><a href="{{ route('main.category.index', ['category' => $category->idName]) }}" target="_blank">{{ $category->name }}</a></li>
+                                        @endforeach
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>

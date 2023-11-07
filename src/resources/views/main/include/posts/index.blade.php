@@ -8,7 +8,7 @@
                     <div class="col">
                         <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
                             <div class="title"><h3>Общее</h3></div>
-                            <div class="title"><a href="{{ route('main.category.general.index') }}" style="color: #000;" target="_blank">см. все</a></div>
+                            <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                         </div>
 
                     </div>
@@ -224,7 +224,7 @@
                     <div class="col">
                         <div class="section-tittle mb-25 d-flex justify-content-between align-items-center">
                             <div class="title"><h3>Развлечения</h3></div>
-                            <div class="title"><a href="{{ route('main.category.business.index') }}" style="color: #000;" target="_blank">см. все</a></div>
+                            <div class="title"><a href="{{ route('main.teaserfeed.index') }}" style="color: #000;" target="_blank">см. все</a></div>
                         </div>
 
                     </div>

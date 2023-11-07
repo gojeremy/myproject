@@ -17,7 +17,7 @@ class PostFactory extends Factory
             'category' => 'general',
             'published' => 1,
             'description' => $this->faker->sentence,
-            'urlToImage' => 'images/4e20b65a96e7402689ed14c761d673d0.jpg',
+            'urlToImage' => 'images/testImage.jpg',
             // Другие поля
         ];
     }

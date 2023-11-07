@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Offer;
 use App\Models\Post;
 use Illuminate\Support\Facades\Cache;
@@ -17,7 +18,7 @@ class IndexController extends Controller
     public function __invoke(): View
     {
         $posts = $this->getPosts();
-
+        $categories = $this->getMenuCategories();
         list($mobile_offer, $desktop_offers) = $this->getModalContent();
 
         $tags = $this->getTags();
@@ -34,9 +35,16 @@ class IndexController extends Controller
 
         $footer = $this->getPool($posts, 3);
 
-        return view('main.index', compact('tags', 'taggedPosts', 'pool2', 'pool3', 'pool4','pool5', 'pool6', 'pool7', 'pool8', 'pool9', 'mobile_offer', 'desktop_offers', 'footer'));
+        return view('main.index', compact('tags', 'taggedPosts', 'pool2', 'pool3', 'pool4','pool5', 'pool6', 'pool7', 'pool8', 'pool9', 'mobile_offer', 'desktop_offers', 'footer', 'categories'));
     }
-
+    protected function getMenuCategories() {
+        $categories = Cache::remember('categoriesMainIndex', now()->addMinutes(5), function () {
+            return Category::where('published', 1)
+                ->orderBy('priority_num','asc')
+                ->get();
+        });
+        return $categories;
+    }
     protected function getTags()
     {
         return ['hot', 'popular', 'recommended'];
@@ -82,8 +90,11 @@ class IndexController extends Controller
     protected function getModalContent()
     {
         $offers = $this->getOffers();
-        $mobile_offer = $offers->splice(0, 1);
-        $desktop_offers = $offers->splice(0, 6);
+     //   $mobile_offer = $offers->splice(0, 1);
+      //  $desktop_offers = $offers->splice(0, 6);
+        $mobile_offer = $offers->random(1);
+        $desktop_offers = $offers->random(6);
+
 
         return [$mobile_offer, $desktop_offers];
     }
